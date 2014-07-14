@@ -8,15 +8,30 @@
     var nav = WinJS.Navigation;
     var sched = WinJS.Utilities.Scheduler;
     var ui = WinJS.UI;
+    window.$ = WinJS.Utilities.query;
 
     app.addEventListener("activated", function (args) {
+
         if (args.detail.kind === activation.ActivationKind.launch) {
+
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
+
                 // TODO: This application has been newly launched. Initialize
                 // your application here.
             } else {
+
                 // TODO: This application has been reactivated from suspension.
                 // Restore application state here.
+            }
+
+            HL.isPhone = $("body").hasClass("phone");
+
+            if (HL.isPhone) {
+
+                HL.phone.setup().done();
+            } else {
+
+                HL.desktop.setup().done();
             }
 
             hookUpBackButtonGlobalEventHandlers();
@@ -26,10 +41,13 @@
             // Optimize the load of the application and while the splash screen is shown, execute high priority scheduled work.
             ui.disableAnimations();
             var p = ui.processAll().then(function () {
+
                 return nav.navigate(nav.location || Application.navigator.home, nav.state);
             }).then(function () {
+
                 return sched.requestDrain(sched.Priority.aboveNormal + 1);
             }).then(function () {
+
                 ui.enableAnimations();
             });
 
@@ -51,13 +69,13 @@
     }
 
     // CONSTANTS
-    var KEY_LEFT = "Left";
-    var KEY_BROWSER_BACK = "BrowserBack";
-    var MOUSE_BACK_BUTTON = 3;
+    var keyLeft = "Left";
+    var keyBrowserBack = "BrowserBack";
+    var mouseBackButton = 3;
 
     function backButtonGlobalKeyUpHandler(event) {
         // Navigates back when (alt + left) or BrowserBack keys are released.
-        if ((event.key === KEY_LEFT && event.altKey && !event.shiftKey && !event.ctrlKey) || (event.key === KEY_BROWSER_BACK)) {
+        if ((event.key === keyLeft && event.altKey && !event.shiftKey && !event.ctrlKey) || (event.key === keyBrowserBack)) {
             nav.back();
         }
     }

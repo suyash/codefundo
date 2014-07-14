@@ -58,6 +58,11 @@
     </AppxManifest>
     <Content Include="default.html" />
     <None Include="Hyperlapse.Windows_StoreKey.pfx" />
+    <Content Include="images\hubBack\1.jpg" />
+    <Content Include="images\hubBack\2.jpg" />
+    <Content Include="images\hubBack\3.jpg" />
+    <Content Include="images\hubBack\4.jpg" />
+    <Content Include="images\hubBack\5.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\smalllogo.png" />
     <Content Include="images\splashscreen.png" />
