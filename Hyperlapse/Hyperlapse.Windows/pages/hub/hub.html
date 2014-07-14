@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>hubPage</title>
+
+    <link href="/pages/hub/hub.css" rel="stylesheet" />
+    <script src="/pages/hub/hub.js"></script>
+</head>
+<body>
+    <div class="hubpage fragment">
+        <header aria-label="Header content" role="banner">
+            <button class="backbutton" data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle">Hyperlapse</span>
+            </h1>
+        </header>
+
+        <section aria-label="Main content" role="main">
+            <div class="hub" data-win-control="WinJS.UI.Hub">
+                <div class="hero" data-win-control="WinJS.UI.HubSection">
+                </div>
+
+                <div class="section1" 
+                     data-win-control="WinJS.UI.HubSection" 
+                     data-win-options="{ isHeaderStatic: true }" 
+                     data-win-res="{ winControl: {'header': 'Section1'} }">
+                    
+                </div>
+
+                <div class="section2" 
+                     data-win-control="WinJS.UI.HubSection" 
+                     data-win-options="{ isHeaderStatic: true }" 
+                     data-win-res="{ winControl: {'header': 'Section2'} }">
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
