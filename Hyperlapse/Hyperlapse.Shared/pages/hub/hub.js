@@ -26,7 +26,10 @@
                 if (args.srcElement === hub.element && args.detail.loadingState === "complete") {
 
                     hub.onloadingstatechanged = null;
-                    // hub loaded
+
+                    /**
+                    hub loaded
+                    */
                     if (HL.isPhone) {
 
                         HL.phone.setPivot();
@@ -36,8 +39,6 @@
                     }
                 }
             }
-
-            // TODO: Initialize the page here.
         },
 
         unload: function () {

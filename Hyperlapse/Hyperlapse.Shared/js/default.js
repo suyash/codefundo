@@ -10,6 +10,26 @@
     var ui = WinJS.UI;
     window.$ = WinJS.Utilities.query;
 
+    /**
+    Set splashscreen if present
+    */
+    var setSplash = function(splash) {
+
+        return new WinJS.Promise(function(success, error, progress) {
+
+            var $si = $(".splashimage");
+            $si.setStyle("top", splash.imageLocation.y + "px");
+            $si.setStyle("left", splash.imageLocation.x + "px");
+
+            HL.setup().done(function() {
+
+                HL.hideSplash();
+            });
+
+            success();
+        });
+    };
+
     app.addEventListener("activated", function (args) {
 
         if (args.detail.kind === activation.ActivationKind.launch) {
@@ -26,32 +46,14 @@
 
             HL.isPhone = $("body").hasClass("phone");
 
-            if (HL.isPhone) {
-
-                HL.phone.setup().done();
-            } else {
-
-                HL.desktop.setup().done();
-            }
-
             hookUpBackButtonGlobalEventHandlers();
             nav.history = app.sessionState.history || {};
             nav.history.current.initialPlaceholder = true;
 
             // Optimize the load of the application and while the splash screen is shown, execute high priority scheduled work.
             ui.disableAnimations();
-            var p = ui.processAll().then(function () {
 
-                return nav.navigate(nav.location || Application.navigator.home, nav.state);
-            }).then(function () {
-
-                return sched.requestDrain(sched.Priority.aboveNormal + 1);
-            }).then(function () {
-
-                ui.enableAnimations();
-            });
-
-            args.setPromise(p);
+            args.setPromise(setSplash(args.detail.splashScreen));
         }
     });
 

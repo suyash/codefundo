@@ -6,6 +6,7 @@
     <SharedGUID>1ed2fba8-8137-42f3-b12c-fbaaa7ac730b</SharedGUID>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)css\common.css" />
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\viewmodel.js" />

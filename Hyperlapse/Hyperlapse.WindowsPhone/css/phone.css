@@ -1,5 +1,10 @@
-﻿#contenthost {
-	background-color: gray;
+﻿.phone .splashimage {
+	-ms-grid-rows: 360px 80px;
+}
+
+.phone .splashimage img {
+	max-width: 100%;
+	min-height: 100%;
 }
 
 .fragment header[role=banner] {

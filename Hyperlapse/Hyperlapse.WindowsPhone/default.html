@@ -16,16 +16,31 @@
     <script src="/services/mobile services/hyperlapse/service.js"></script>
 
     <!-- Hyperlapse references -->
+    <link href="/css/common.css" rel="stylesheet" />
     <link href="/css/phone.css" rel="stylesheet" />
     <script src="/js/viewmodel.js"></script>
     <script src="/js/navigator.js"></script>
     <script src="/js/default.js"></script>
 </head>
 <body class="phone">
-    <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/hub/hub.html'}"></div>
+    <section id="Application" role="application">
+        <div id="splashContainer">
+            <div class="splashimage">
+                <div class="splashimg">
+                    <img src="/images/splashscreen.png" alt="splashscreen" />
+                </div>
+                <div class="splashprogress">
+                    <progress class="win-ring win-medium"></progress>
+                </div>
+            </div>
+        </div>
+        <div id="contenthost"
+             data-win-control="Application.PageControlNavigator"
+             data-win-options="{home: '/pages/hub/hub.html'}">
+        </div>
+    </section>
     <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
         <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
     </div> -->
-
 </body>
 </html>

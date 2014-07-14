@@ -1,0 +1,40 @@
+﻿#Application {
+	height: 100%;
+}
+
+.splashimage {
+	position: absolute;
+	display: -ms-grid;
+	-ms-grid-rows: 1fr 80px;
+	-ms-grid-columns: 1fr;
+}
+
+.splashimg {
+	-ms-grid-row: 1;
+	-ms-grid-column: 1;
+}
+
+.splashprogress {
+	-ms-grid-column: 1;
+	-ms-grid-row: 2;
+	text-align: center;
+	padding-top: 30px;
+}
+
+.splashprogress progress {
+	color: white;
+}
+
+.hidden {
+	display: none;
+}
+
+#contenthost {
+    height: 100%;
+    width: 100%;
+}
+
+    #splashContainer {
+    	height: 100%;
+    	position: relative;
+    }

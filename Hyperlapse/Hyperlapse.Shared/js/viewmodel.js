@@ -2,6 +2,10 @@
 
     "use strict";
 
+    var ui = WinJS.UI;
+    var nav = WinJS.Navigation;
+    var sched = WinJS.Utilities.Scheduler;
+
     WinJS.Namespace.define("HL", {});
 
     /**
@@ -25,16 +29,49 @@
     HL.desktop.backImageCount = 5;
 
     /**
+    common setup
+    */
+    HL.setup = function () {
+
+        return ui.processAll().then(function () {
+
+            return nav.navigate(nav.location || Application.navigator.home, nav.state);
+        }).then(function () {
+
+            return sched.requestDrain(sched.Priority.aboveNormal + 1);
+        }).then(function () {
+
+            ui.enableAnimations();
+        }).then(function () {
+
+            if (HL.isPhone) {
+
+                HL.phone.setup();
+            } else {
+
+                HL.desktop.setup();
+            }
+        });
+    };
+
+    /**
+    Hide splash screen
+    */
+    HL.hideSplash = function() {
+
+        $("#splashContainer").addClass("hidden");
+        $("#contenthost").removeClass("hidden");
+    };
+
+    /**
     Desktop mode specific setup options
     */
     HL.desktop.setup = function () {
 
-        return new WinJS.Promise(function (complete, error, progress) {
+        
+        var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
 
-            var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
-
-            $("body").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
-        });
+        $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
     };
 
     /**
