@@ -29,6 +29,305 @@
 	display: none;
 }
 
+.invisible {
+	visibility: hidden;
+}
+
+.heroimages {
+	height: 100%;
+	overflow: hidden;
+	display: -ms-grid;
+	-ms-grid-rows: 1fr;
+	-ms-grid-columns: 1fr;
+}
+
+.heroimage {
+	height: 100%;
+	opacity: 0;
+	background-size: cover;
+	animation-duration: 30s;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-play-state: running;
+	width: 100%;
+	-ms-grid-row: 1;
+	-ms-grid-column: 1;
+}
+
+@keyframes heroimage1animation {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	10% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	20% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	90% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+#heroimage1 {
+	animation-name: heroimage1animation;
+	background-image: url('/images/heroImages/1.jpg');
+	opacity: 1;
+}
+
+@keyframes heroimage2animation {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	10% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	20% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	30% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+#heroimage2 {
+	animation-name: heroimage2animation;
+	background-image: url('/images/heroImages/2.jpg');
+}
+
+@keyframes heroimage3animation {
+	10% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	20% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	30% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	40% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+#heroimage3 {
+	animation-name: heroimage3animation;
+	background-image: url('/images/heroImages/3.jpg');
+}
+
+@keyframes heroimage4animation {
+	20% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	30% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	40% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	50% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+#heroimage4 {
+	animation-name: heroimage4animation;
+	background-image: url('/images/heroImages/4.jpg');
+}
+
+@keyframes heroimage5animation {
+	30% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	40% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	60% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+#heroimage5 {
+	animation-name: heroimage5animation;
+	background-image: url('/images/heroImages/5.jpg');
+}
+
+@keyframes heroimage6animation {
+	40% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	60% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	70% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+#heroimage6 {
+	animation-name: heroimage6animation;
+	background-image: url('/images/heroImages/6.jpg');
+}
+
+@keyframes heroimage7animation {
+	50% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	60% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	70% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	80% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+#heroimage7 {
+	animation-name: heroimage7animation;
+	background-image: url('/images/heroImages/7.jpg');
+}
+
+@keyframes heroimage8animation {
+	60% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	70% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	80% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	90% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+#heroimage8 {
+	animation-name: heroimage8animation;
+	background-image: url('/images/heroImages/8.jpg');
+}
+
+@keyframes heroimage9animation {
+	70% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	80% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	90% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+
+#heroimage9 {
+	animation-name: heroimage9animation;
+	background-image: url('/images/heroImages/9.jpg');
+}
+
+@keyframes heroimage10animation {
+	0% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+	80% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	90% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.5);
+	}
+}
+
+#heroimage10 {
+	animation-name: heroimage10animation;
+	background-image: url('/images/heroImages/10.jpg');
+}
+
 #contenthost {
     height: 100%;
     width: 100%;

@@ -29,7 +29,7 @@
     HL.desktop.backImageCount = 5;
 
     /**
-    common setup
+    common setup operations
     */
     HL.setup = function () {
 

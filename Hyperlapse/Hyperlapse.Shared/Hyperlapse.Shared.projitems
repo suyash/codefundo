@@ -7,6 +7,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)css\common.css" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\1.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\10.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\2.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\3.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\4.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\5.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\6.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\7.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\8.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\heroImages\9.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\viewmodel.js" />
