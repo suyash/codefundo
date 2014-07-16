@@ -9,7 +9,7 @@
 
     .fragment header[role=banner] {
         /* Define a grid with columns for the back button and page title. */
-        -ms-grid-columns: 37px 83px 1fr;
+        -ms-grid-columns: 37px 83px 1fr 210px 37px;
         -ms-grid-rows: 1fr;
         display: -ms-grid;
     }
@@ -33,4 +33,59 @@
     .fragment section[role=main] {
         -ms-grid-row: 2;
         height: 100%;
+    }
+
+    .fragment .signstatus {
+    	-ms-grid-column: 4;
+    	-ms-grid-row: 1;
+    }
+
+    .sign {
+    	height: 80px;
+    	margin-top: 37px;
+    	width: 100%;
+    	display: block;
+		opacity: 0.6;
+		border: 2px solid transparent;
+        transition: all ease-in-out 0.2s;
+    }
+
+    .sign:hover {
+    	border: 2px solid white;
+    	background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .sign.pressed {
+        transform: scale(0.9);
+    }
+
+    .signimageholder {
+    	-ms-grid-column: 1;
+    	-ms-grid-row: 1;
+		float: left;
+		width: 80px;
+		height: 100%;
+    }
+
+    .signtextholder {
+		float: right;
+		height: 100%;
+		color: white;
+		text-align: right;
+		font-size: 1.7em;
+		margin: 0;
+		padding-right: 10px;
+    }
+
+    .signimage {
+    	background-size: cover;
+    	height: 100%;
+    }
+
+    .signedout .signimage {
+    	background-image: url('/images/gray.png');
+    }
+
+    .signedoutheader {
+    	padding-top: 5px;
     }

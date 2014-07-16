@@ -9,5 +9,8 @@
     "Section2": ", or Create your Own",
 	"Section2Mobile": "Mapper",
 	"Section2Title": "Top Locations",
-	"Section2SeeAll": "Open Map"
+	"Section2SeeAll": "Open Map",
+
+	"SignedOutTextHeader": "Not",
+	"SignedOutTextMain": "Signed In"
 }

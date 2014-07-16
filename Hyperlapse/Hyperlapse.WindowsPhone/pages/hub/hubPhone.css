@@ -127,6 +127,28 @@
 		border-width: 0px;
 		font-weight: lighter;
 	}
+
+	.signstatus {
+		-ms-grid-column: 2;
+		-ms-grid-row: 1;
+		padding-right: 10px;
+	}
+
+	.sign {
+		color: white;
+		text-align: right;
+		text-decoration: none;
+		font-size: 1.2em;
+		border-width: 0px;
+	}
+	
+	.sign:hover {
+		color: white;
+	}
+
+	.sign.pressed {
+		transform: scale(0.9);
+	}
 		
 .label-extralarge {
 	font-size: 28pt;

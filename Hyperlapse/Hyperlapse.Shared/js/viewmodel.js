@@ -51,6 +51,31 @@
 
                 HL.desktop.setup();
             }
+        }).then(function() {
+
+            HL.checkSigninStatus();
+        }).then(function() {
+
+            var template = HL.signedIn ? $("#signedinTemplate")[0] : $("#signedoutTemplate")[0],
+                context  = HL.signedIn ? {} : {},
+                root = $(".signstatus")[0];
+
+            template.winControl.render(context, root).done(function(el) {
+
+                WinJS.Resources.processAll(root);
+
+                var sel = el.querySelector(".sign");
+
+                sel.onmousedown = function () {
+
+                    sel.classList.add("pressed");
+                };
+
+                sel.onmouseup = function () {
+
+                    sel.classList.remove("pressed");
+                };
+            });
         });
     };
 
@@ -77,16 +102,23 @@
     /**
     Phone mode specific setup options
     */
-    HL.phone.setup = function () {
-        
-        return new WinJS.Promise(function (complete, error, progress) { });
-    };
+    HL.phone.setup = function () {};
 
     /**
     create hub for desktop
     */
     HL.desktop.setHub = function () {
     };
+
+    /**
+    signed in flag, true for a signed in user
+    */
+    HL.signedIn = false;
+
+    /**
+    check signin status
+    */
+    HL.checkSigninStatus = function () {};
 
     /**
     Random shit to delete in production

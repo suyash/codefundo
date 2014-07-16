@@ -42,5 +42,13 @@
     <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
         <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
     </div> -->
+    <div id="signedoutTemplate" data-win-control="WinJS.Binding.Template">
+        <button class="signedout sign">
+            <div class="signtextholder">
+                <div class="signedoutheader signheader" data-win-res="{ innerHTML: 'SignedOutTextHeader' }"></div>
+                <div class="signedoutmain signmain" data-win-res="{ innerHTML: 'SignedOutTextMain' }"></div>
+            </div>
+        </button>
+    </div>
 </body>
 </html>
