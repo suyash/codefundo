@@ -62,6 +62,71 @@
 		margin-left: 20px;
 		margin-right: 0px;
 	}
+
+	.hubpage .pivotsection {
+		display: -ms-grid;
+		-ms-grid-columns: 1fr;
+		-ms-grid-rows: 50px 1fr 50px;
+		height: 100%;
+		width: 100%;
+	}
+
+	.hubpage .previewtitle {
+		-ms-grid-column: 1;
+		-ms-grid-row: 1;
+		text-align: center;
+		padding-top: 10px;
+		height: 100%;
+		width: 100%;
+	}
+
+	.hubpage .previewlist {
+		-ms-grid-column: 1;
+		-ms-grid-row: 2;
+		height: 100%;
+	}
+
+	.hubpage .win-listview {
+		height: 100%;
+	}
+
+	.hubpage .win-listview .win-container .previewitem {
+		margin: 5px 0px;
+	}
+
+	.hubpage .win-listview .win-container:first-child .previewitem {
+		margin-top: 0px;
+	}
+
+	.hubpage .win-listview .win-container:last-child .previewitem {
+		margin-bottom: 0px;
+	}
+
+	.hubpage .win-listview .win-itembox {
+		background-color: rgba(255, 255, 255, 0.15);
+		transition: all ease-in-out 0.4s;
+	}
+
+	.hubpage .win-listview .win-itembox:hover {
+		background-color: rgba(255, 255, 255, 0.4);
+	}
+
+	.hubpage .win-listview .previewitem {
+		text-align: center;
+		padding: 20px 0px;
+	}
+
+	.hubpage .fullpreview {
+		-ms-grid-column: 1;
+		-ms-grid-row: 3;
+		text-align: center;
+	}
+
+	.hubpage .fullpreview button {
+		margin: 8px 0px 0px;
+		border-width: 0px;
+		font-weight: lighter;
+	}
 		
 .label-extralarge {
 	font-size: 28pt;

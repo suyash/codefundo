@@ -3,7 +3,11 @@
 	
 	"Section1": "Select a Preset",
 	"Section1Mobile": "Presets",
+	"Section1Title": "Top Presets",
+	"Section1SeeAll": "See All Presets",
 
     "Section2": ", or Create your Own",
-	"Section2Mobile": "Mapper"
+	"Section2Mobile": "Mapper",
+	"Section2Title": "Top Locations",
+	"Section2SeeAll": "Open Map"
 }

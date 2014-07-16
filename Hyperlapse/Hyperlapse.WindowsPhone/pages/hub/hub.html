@@ -33,21 +33,60 @@
         			</h1>
         		</header>
         		<section aria-label="Main content" role="main">
-        			<div class="hub" data-win-control="WinJS.UI.Pivot">
-        				<div class="section1 section"
-                             data-win-control="WinJS.UI.PivotItem"
-                             data-win-options="{isHeaderStatic:true}"
-                             data-win-res="{ winControl: {'header': 'Section1Mobile'} }">
-
-        				</div>
-        				<div class="section2 section"
-                             data-win-control="WinJS.UI.PivotItem"
-                             data-win-options="{isHeaderStatic:true}"
-                             data-win-res="{ winControl: {'header': 'Section2Mobile'} }">
-
-        				</div>
-        			</div>
-        		</section>
+        	        <div class="hub" data-win-control="WinJS.UI.Pivot">
+        	            <div class="section1 section"
+        	                 data-win-control="WinJS.UI.PivotItem"
+        	                 data-win-options="{isHeaderStatic:true}"
+        	                 data-win-res="{ winControl: {'header': 'Section1Mobile'} }">
+        	                <div class="pivotsection section1pivotsection">
+        	                    <div id="section1pivottemplate" data-win-control="WinJS.Binding.Template">
+        	                        <div class="previewitem section1previewitem">
+        	                            <div data-win-bind="innerHTML: id"></div>
+        	                        </div>
+        	                    </div>
+        	                    <div class="previewtitle">
+        	                        <span class="label-mediummid" data-win-res="{ innerHTML: 'Section1Title' }"></span>
+        	                    </div>
+        	                    <div class="previewlist">
+        	                        <div data-win-control="WinJS.UI.ListView"
+        	                             data-win-options="{
+                                            itemTemplate: select('#section1pivottemplate'),
+                                            itemDataSource: HL.sampleList.dataSource,
+                                            layout: { type: WinJS.UI.ListLayout }
+                                        }"></div>
+        	                    </div>
+        	                    <div class="fullpreview">
+        	                        <button data-win-res="{ innerHTML: 'Section1SeeAll' }"></button>
+        	                    </div>
+        	                </div>
+        	            </div>
+        	            <div class="section2 section"
+        	                 data-win-control="WinJS.UI.PivotItem"
+        	                 data-win-options="{isHeaderStatic:true}"
+        	                 data-win-res="{ winControl: {'header': 'Section2Mobile'} }">
+        	                <div class="pivotsection section1pivotsection">
+        	                    <div id="section2pivottemplate" data-win-control="WinJS.Binding.Template">
+        	                        <div class="previewitem section1previewitem">
+        	                            <div data-win-bind="innerHTML: id"></div>
+        	                        </div>
+        	                    </div>
+        	                    <div class="previewtitle">
+        	                        <span class="label-mediummid" data-win-res="{ innerHTML: 'Section2Title' }"></span>
+        	                    </div>
+        	                    <div class="previewlist">
+        	                        <div data-win-control="WinJS.UI.ListView"
+        	                             data-win-options="{ itemTemplate: select('#section2pivottemplate'),
+                                        itemDataSource: HL.sampleList.dataSource,
+                                        layout: { type: WinJS.UI.ListLayout }
+                                    }"></div>
+        	                    </div>
+        	                    <div class="fullpreview">
+        	                        <button data-win-res="{ innerHTML: 'Section2SeeAll' }"></button>
+        	                    </div>
+        	                </div>
+        	            </div>
+        	        </div>
+                </section>
         	</div>
         </div>
     </body>

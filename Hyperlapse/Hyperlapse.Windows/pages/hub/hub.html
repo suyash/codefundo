@@ -38,14 +38,60 @@
                      data-win-control="WinJS.UI.HubSection" 
                      data-win-options="{ isHeaderStatic: true }" 
                      data-win-res="{ winControl: {'header': 'Section1'} }">
-                    
+                    <div class="previewsection hubsection">
+                        <div id="section1previewtemplate"
+                             data-win-control="WinJS.Binding.Template">
+                            <div class="previewitem section1previewitem">
+                                <div data-win-bind="innerHTML: id"></div>
+                            </div>
+                        </div>
+                        <div class="preview">
+                        	<div class="previewimage"></div>
+                        </div>
+                        <div class="previewitems">
+                        	<div class="previewtitle">
+                        		<span class="label-mediummid" data-win-res="{ innerHTML: 'Section1Title' }"></span>
+                        	</div>
+                            <div class="previewlist">
+                                <div data-win-control="WinJS.UI.ListView"
+                                     data-win-options="{
+                                        itemTemplate: select('#section1previewtemplate'),
+                                        itemDataSource: HL.sampleList.dataSource,
+                                        layout: { type: WinJS.UI.ListLayout }
+                                     }"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="section2 section" 
                      data-win-control="WinJS.UI.HubSection" 
                      data-win-options="{ isHeaderStatic: true }" 
                      data-win-res="{ winControl: {'header': 'Section2'} }">
-                    
+                    <div class="mappersection hubsection">
+                        <div id="section2previewtemplate"
+                             data-win-control="WinJS.Binding.Template">
+                            <div class="previewitem section2previewitem">
+                                <div data-win-bind="innerHTML: id"></div>
+                            </div>
+                        </div>
+                        <div class="preview">
+                            <div class="previewimage"></div>
+                        </div>
+                        <div class="previewitems">
+                            <div class="previewtitle">
+                                <span class="label-mediummid" data-win-res="{ innerHTML: 'Section2Title' }"></span>
+                            </div>
+                            <div class="previewlist">
+                                <div data-win-control="WinJS.UI.ListView"
+                                     data-win-options="{
+                                        itemTemplate: select('#section2previewtemplate'),
+                                        itemDataSource: HL.sampleList.dataSource,
+                                        layout: { type: WinJS.UI.ListLayout }
+                                     }"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

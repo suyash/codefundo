@@ -44,6 +44,71 @@
     .hubpage .section {
     	min-width: 900px;
     }
+
+    .hubpage .hubsection {
+    	height: 100%;
+    	display: -ms-grid;
+    	-ms-grid-columns: 1fr 300px;
+    	-ms-grid-rows: 1fr;
+    }
+
+    .hubpage .preview {
+    	-ms-grid-column: 1;
+    	-ms-grid-row: 1;
+    	border: 5px solid white;
+    	margin: 20px;
+		margin-left: 0;
+    }
+
+    .hubpage .previewimage {
+    	height: 100%;
+    }
+
+    .hubpage .previewitems {
+    	margin: 20px;
+    	-ms-grid-column: 2;
+    	-ms-grid-row: 1;
+    	display: -ms-grid;
+    	-ms-grid-rows: 50px 1fr;
+    	-ms-grid-columns: 1fr;
+    }
+
+    .hubpage .previewtitle {
+    	-ms-grid-row: 1;
+    	-ms-grid-column: 1;
+    	text-align: center;
+    }
+
+    .hubpage .previewlist {
+    	-ms-grid-row: 2;
+    	-ms-grid-column: 1;
+    }
+
+    .hubpage .win-listview {
+    	height: 100%;
+    }
+
+    .hubpage .win-listview .win-item {
+    	margin: 20px 0px;
+    }
+
+    .hubpage .win-listview .win-container:first-child .win-item {
+    	margin-top: 0px;
+    }
+
+    .hubpage .win-listview .win-itembox {
+    	background-color: rgba(255, 255, 255, 0.3);
+		transition: all ease-in-out 0.4s;
+    }
+
+    .hubpage .win-listview .win-itembox:hover {
+    	background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .hubpage .previewitem {
+    	padding: 25px;
+    	text-align: center;
+    }
 		
 .label-extralarge {
 	font-size: 28pt;
@@ -60,4 +125,5 @@
 	font-size: 15pt;
 	opacity: 0.6;
 	line-height: 17.5pt;
+	margin-right: 15px;
 }

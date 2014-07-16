@@ -88,4 +88,25 @@
     HL.desktop.setHub = function () {
     };
 
+    /**
+    Random shit to delete in production
+    */
+    HL.sampleList = new WinJS.Binding.List([
+        {
+            id: "1"
+        },
+        {
+            id: 2
+        },
+        {
+            id: 3
+        },
+        {
+            id: 4
+        },
+        {
+            id: 5
+        }
+    ]);
+
 })();
