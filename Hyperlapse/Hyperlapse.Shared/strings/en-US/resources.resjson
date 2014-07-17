@@ -12,5 +12,11 @@
 	"Section2SeeAll": "Open Map",
 
 	"SignedOutTextHeader": "Not",
-	"SignedOutTextMain": "Signed In"
+	"SignedOutTextMain": "Signed In",
+
+	"SigninHeader": "Sign In With",
+	"SigninFacebook": "Facebook",
+	"SigninTwitter": "Twitter",
+	"SigninGoogle": "Google",
+	"SigninMS": "Microsoft Account"
 }

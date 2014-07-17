@@ -6,6 +6,11 @@
     var nav = WinJS.Navigation;
     var sched = WinJS.Utilities.Scheduler;
 
+    /**
+    current user id
+    */
+    var userData = null;
+
     WinJS.Namespace.define("HL", {});
 
     /**
@@ -27,6 +32,47 @@
     Number of background images, one is loaded randomly on startup
     */
     HL.desktop.backImageCount = 5;
+
+    /**
+    Create a flyout with a root
+    */
+    var setFlyout = function(flyout, root) {
+        
+        WinJS.Resources.processAll(flyout);
+
+        flyout.addEventListener("beforeshow", function () {
+
+            root.classList.add("pressed");
+        });
+
+        flyout.addEventListener("afterhide", function () {
+
+            root.classList.remove("pressed");
+        });
+    };
+
+    /**
+    show a message dialog
+    */
+    var showDialog = function(header, message, cb) {
+
+        var popup = new Windows.UI.Popups.MessageDialog(header, message);
+        popup.showAsync().done(cb);
+    };
+
+    /**
+    Render sign in box
+    */
+    var setSignedinBox = function() {
+
+        var template = $("#signedinTemplate")[0],
+            context = userData,
+            root = $(".signstatus")[0];
+
+        WinJS.Utilities.empty(root);
+
+        template.winControl.render(context, root);
+    };
 
     /**
     common setup operations
@@ -56,9 +102,18 @@
             HL.checkSigninStatus();
         }).then(function() {
 
+            /**
+            Login related Setup
+            */
             var template = HL.signedIn ? $("#signedinTemplate")[0] : $("#signedoutTemplate")[0],
-                context  = HL.signedIn ? {} : {},
-                root = $(".signstatus")[0];
+                context  = HL.signedIn ? userData : {},
+                root = $(".signstatus")[0],
+                flyout = $(".loginflyout")[0];
+
+            if (!HL.signedIn) {
+
+                setFlyout(flyout, root);
+            }
 
             template.winControl.render(context, root).done(function(el) {
 
@@ -66,16 +121,85 @@
 
                 var sel = el.querySelector(".sign");
 
-                sel.onmousedown = function () {
+                sel.addEventListener("pointerdown", function(e) {
 
-                    sel.classList.add("pressed");
-                };
+                    WinJS.UI.Animation.pointerDown(e.srcElement);
+                    flyout.winControl.show(sel, "bottom");
+                });
 
-                sel.onmouseup = function () {
+                sel.addEventListener("pointerup", function (e) {
 
-                    sel.classList.remove("pressed");
-                };
+                    WinJS.UI.Animation.pointerUp(e.srcElement);
+                });
             });
+
+            /**
+            login client event handler
+            */
+            var handleLogin = function(e) {
+
+                /**
+                gets element client based on id
+                */
+                var getClient = function(id) {
+
+                    if (id === "loginMS") {
+                        return "microsoftaccount";
+                    } else if (id === "loginFacebook") {
+                        return "facebook";
+                    } else if (id === "loginTwitter") {
+                        return "twitter";
+                    } else if (id === "loginGoogle") {
+                        return "google";
+                    } else {
+                        return null;
+                    }
+                }
+
+                var client = getClient(e.srcElement.id);
+
+                /**
+                successful login handler
+                */
+                var handleSuccess = function (results) {
+
+                    var handleData = function(response) {
+
+                        userData = response.result;
+                        setSignedinBox();
+                    };
+
+                    var handleDataError = function(err) {
+
+                        showDialog("An Error Occured During login", "Couldn't fetch your data, try again");
+                        console.log(err);
+                    };
+
+                    return hyperlapseClient.invokeApi("getuserdata", {
+                        
+                        body: {},
+                        method: "get"
+                    }).done(handleData, handleDataError);
+                };
+
+                /**
+                login error handler
+                */
+                var handleError = function(err) {
+
+                    if (err.responseStatus !== 1) {
+
+                        showDialog("An Error Occured during Login", "Could not log you in, try again");
+                    }
+                };
+
+                hyperlapseClient.login(client).then(handleSuccess, handleError);
+            };
+
+            $("#loginFacebook").listen("click", handleLogin);
+            $("#loginTwitter").listen("click", handleLogin);
+            $("#loginGoogle").listen("click", handleLogin);
+            $("#loginMS").listen("click", handleLogin);
         });
     };
 

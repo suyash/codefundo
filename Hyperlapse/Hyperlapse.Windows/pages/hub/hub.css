@@ -109,6 +109,54 @@
     	padding: 25px;
     	text-align: center;
     }
+
+    .loginflyout.win-menu {
+    	border-color: white;
+    	background-color: rgba(255, 255, 255, 0.6);
+    	width: 300px;
+    	margin-left: -86px;
+    	margin-top: -2px;
+    }
+
+    #loginHeader {
+    	color: black;
+    }
+
+    #loginMS {
+    	color: royalblue;
+    }
+
+    #loginMS:hover {
+    	color: white;
+    	background-color: royalblue;
+    }
+
+    #loginTwitter {
+    	color: cyan;
+    }
+
+    #loginTwitter:hover {
+    	color: white;
+    	background-color: cyan;
+    }
+
+    #loginGoogle {
+    	color: red;
+    }
+
+    #loginGoogle:hover {
+    	color: white;
+    	background-color: red;
+    }
+
+    #loginFacebook {
+    	color: darkblue;
+    }
+
+    #loginFacebook:hover {
+    	color: white;
+    	background-color: darkblue;
+    }
 		
 .label-extralarge {
 	font-size: 28pt;

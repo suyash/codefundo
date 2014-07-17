@@ -39,13 +39,46 @@
     <div id="signedoutTemplate" data-win-control="WinJS.Binding.Template">
         <a href="#" class="signedout sign">
             <div class="signimageholder">
-                <div class="signimage"></div>
+                <img src="/images/gray.png" />
             </div>
             <div class="signtextholder">
                 <div class="signedoutheader signheader" data-win-res="{ innerHTML: 'SignedOutTextHeader' }"></div>
                 <div class="signedoutmain signmain" data-win-res="{ innerHTML: 'SignedOutTextMain' }"></div>
             </div>
         </a>
+    </div>
+    <div id="signedinTemplate" data-win-control="WinJS.Binding.Template">
+        <a href="#" class="signedin sign">
+            <div class="signimageholder">
+                <img class="signimage signedinimage" data-win-bind="src: img" />
+            </div>
+            <div class="signtextholder">
+                <div class="signedinheader signheader" data-win-bind="innerHTML: firstname"></div>
+                <div class="signedinmain signmain" data-win-bind="innerHTML: lastname"></div>
+            </div>
+        </a>
+    </div>
+    <div class="loginflyout" data-win-control="WinJS.UI.Menu">
+        <button class="loginheader"
+                data-win-control="WinJS.UI.MenuCommand"
+                data-win-options="{ id: 'loginHeader', disabled: true }"
+                data-win-res="{ winControl: { label: 'SigninHeader' }}"></button>
+        <button class="loginbutton"
+                data-win-control="WinJS.UI.MenuCommand"
+                data-win-options="{ id: 'loginMS' }"
+                data-win-res="{ winControl: { label: 'SigninMS' }}"></button>
+        <button class="loginbutton"
+                data-win-control="WinJS.UI.MenuCommand"
+                data-win-options="{ id: 'loginTwitter' }"
+                data-win-res="{ winControl: { label: 'SigninTwitter' }}"></button>
+        <button class="loginbutton"
+                data-win-control="WinJS.UI.MenuCommand"
+                data-win-options="{ id: 'loginGoogle' }"
+                data-win-res="{ winControl: { label: 'SigninGoogle' }}"></button>
+        <button class="loginbutton"
+                data-win-control="WinJS.UI.MenuCommand"
+                data-win-options="{ id: 'loginFacebook' }"
+                data-win-res="{ winControl: { label: 'SigninFacebook' }}"></button>
     </div>
     <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
         <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
