@@ -26,17 +26,6 @@
                 if (args.srcElement === hub.element && args.detail.loadingState === "complete") {
 
                     hub.onloadingstatechanged = null;
-
-                    /**
-                    hub loaded
-                    */
-                    if (HL.isPhone) {
-
-                        HL.phone.setPivot();
-                    } else {
-
-                        HL.desktop.setHub();
-                    }
                 }
             }
         },

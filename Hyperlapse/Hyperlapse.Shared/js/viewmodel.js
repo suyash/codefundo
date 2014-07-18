@@ -5,6 +5,9 @@
     var ui = WinJS.UI;
     var nav = WinJS.Navigation;
     var sched = WinJS.Utilities.Scheduler;
+    var vault = new Windows.Security.Credentials.PasswordVault();
+    var applicationData = Windows.Storage.ApplicationData.current;
+    var roamingSettings = applicationData.roamingSettings;
 
     /**
     current user id
@@ -75,6 +78,129 @@
     };
 
     /**
+    Render sign out box
+    */
+    var setSignedoutBox = function () {
+
+        var template = $("#signedoutTemplate")[0],
+            context = {},
+            root = $(".signstatus")[0],
+            flyout = $(".loginflyout")[0];
+
+        setFlyout(flyout, root);
+
+        WinJS.Utilities.empty(root);
+
+        return template.winControl.render(context, root).then(function (el) {
+
+            WinJS.Resources.processAll(root);
+
+            var sel = el.querySelector(".sign");
+
+            sel.addEventListener("pointerdown", function (e) {
+
+                WinJS.UI.Animation.pointerDown(e.srcElement);
+                flyout.winControl.show(sel, "bottom");
+            });
+
+            sel.addEventListener("pointerup", function (e) {
+
+                WinJS.UI.Animation.pointerUp(e.srcElement);
+            });
+        }).done(function() {
+
+            $("#loginFacebook").listen("click", handleLogin);
+            $("#loginTwitter").listen("click", handleLogin);
+            $("#loginGoogle").listen("click", handleLogin);
+            $("#loginMS").listen("click", handleLogin);
+        });
+    };
+
+    /**
+    Get user Data from client
+    */
+    var getUserData = function() {
+        
+        var handleData = function (response) {
+
+            userData = response.result;
+            setSignedinBox();
+
+            /**
+            Set Roaming Data
+            */
+            var composite = new Windows.Storage.ApplicationDataCompositeValue();
+            composite.firstname = userData.firstname;
+            composite.lastname = userData.lastname;
+            composite.img = userData.img;
+
+            roamingSettings.values["userData"] = composite;
+        };
+
+        var handleDataError = function (err) {
+
+            showDialog("An Error Occured During login", "Couldn't fetch your data, try again");
+            console.log(err);
+        };
+
+        return hyperlapseClient.invokeApi("getuserdata", {
+
+            body: {},
+            method: "get"
+        }).done(handleData, handleDataError);
+    };
+
+    /**
+    login client event handler
+    */
+    var handleLogin = function (e) {
+
+        /**
+        gets element client based on id
+        */
+        var getClient = function (id) {
+
+            if (id === "loginMS") {
+                return "microsoftaccount";
+            } else if (id === "loginFacebook") {
+                return "facebook";
+            } else if (id === "loginTwitter") {
+                return "twitter";
+            } else if (id === "loginGoogle") {
+                return "google";
+            } else {
+                return null;
+            }
+        }
+
+        var client = getClient(e.srcElement.id);
+
+        /**
+        successful login handler
+        */
+        var handleSuccess = function(results) {
+
+            var credential = new Windows.Security.Credentials.PasswordCredential("Login", results.userId, results.mobileServiceAuthenticationToken);
+            vault.add(credential);
+
+            getUserData();
+        };
+
+        /**
+        login error handler
+        */
+        var handleError = function (err) {
+
+            if (err.responseStatus !== 1) {
+
+                showDialog("An Error Occured during Login", "Could not log you in, try again");
+            }
+        };
+
+        hyperlapseClient.login(client).then(handleSuccess, handleError);
+    };
+
+    /**
     common setup operations
     */
     HL.setup = function () {
@@ -99,107 +225,7 @@
             }
         }).then(function() {
 
-            HL.checkSigninStatus();
-        }).then(function() {
-
-            /**
-            Login related Setup
-            */
-            var template = HL.signedIn ? $("#signedinTemplate")[0] : $("#signedoutTemplate")[0],
-                context  = HL.signedIn ? userData : {},
-                root = $(".signstatus")[0],
-                flyout = $(".loginflyout")[0];
-
-            if (!HL.signedIn) {
-
-                setFlyout(flyout, root);
-            }
-
-            template.winControl.render(context, root).done(function(el) {
-
-                WinJS.Resources.processAll(root);
-
-                var sel = el.querySelector(".sign");
-
-                sel.addEventListener("pointerdown", function(e) {
-
-                    WinJS.UI.Animation.pointerDown(e.srcElement);
-                    flyout.winControl.show(sel, "bottom");
-                });
-
-                sel.addEventListener("pointerup", function (e) {
-
-                    WinJS.UI.Animation.pointerUp(e.srcElement);
-                });
-            });
-
-            /**
-            login client event handler
-            */
-            var handleLogin = function(e) {
-
-                /**
-                gets element client based on id
-                */
-                var getClient = function(id) {
-
-                    if (id === "loginMS") {
-                        return "microsoftaccount";
-                    } else if (id === "loginFacebook") {
-                        return "facebook";
-                    } else if (id === "loginTwitter") {
-                        return "twitter";
-                    } else if (id === "loginGoogle") {
-                        return "google";
-                    } else {
-                        return null;
-                    }
-                }
-
-                var client = getClient(e.srcElement.id);
-
-                /**
-                successful login handler
-                */
-                var handleSuccess = function (results) {
-
-                    var handleData = function(response) {
-
-                        userData = response.result;
-                        setSignedinBox();
-                    };
-
-                    var handleDataError = function(err) {
-
-                        showDialog("An Error Occured During login", "Couldn't fetch your data, try again");
-                        console.log(err);
-                    };
-
-                    return hyperlapseClient.invokeApi("getuserdata", {
-                        
-                        body: {},
-                        method: "get"
-                    }).done(handleData, handleDataError);
-                };
-
-                /**
-                login error handler
-                */
-                var handleError = function(err) {
-
-                    if (err.responseStatus !== 1) {
-
-                        showDialog("An Error Occured during Login", "Could not log you in, try again");
-                    }
-                };
-
-                hyperlapseClient.login(client).then(handleSuccess, handleError);
-            };
-
-            $("#loginFacebook").listen("click", handleLogin);
-            $("#loginTwitter").listen("click", handleLogin);
-            $("#loginGoogle").listen("click", handleLogin);
-            $("#loginMS").listen("click", handleLogin);
+            return HL.checkSigninStatus();
         });
     };
 
@@ -229,20 +255,72 @@
     HL.phone.setup = function () {};
 
     /**
-    create hub for desktop
-    */
-    HL.desktop.setHub = function () {
-    };
-
-    /**
     signed in flag, true for a signed in user
     */
     HL.signedIn = false;
 
     /**
+    Check if current credential is expired or not
+    */
+    var testCredential = function(credential) {
+
+        var users = hyperlapseClient.getTable("users");
+
+        return users.take(1).read().done(function(r) {
+            
+            /**
+            Current credentials are fine, 
+            get userData from Application roaming data if present, 
+            else from client
+            */
+            var data = roamingSettings.values["userData"];
+
+            if (data.firstname) {
+                userData = {
+                    firstname: data.firstname,
+                    lastname: data.lastname,
+                    img: data.img
+                };
+                HL.signedIn = true;
+                return setSignedinBox();
+            } else {
+                return getUserData();
+            }
+        }, function(err) {
+            
+            /**
+            Couldn't read so credential expired
+            */
+            vault.remove(credential);
+            hyperlapseClient.currentUser = null;
+            return setSignedoutBox();
+        });
+    };
+
+    /**
     check signin status
     */
-    HL.checkSigninStatus = function () {};
+    HL.checkSigninStatus = function() {
+
+        var credential = null;
+
+        try {
+            credential = vault.findAllByResource("Login").getAt(0);
+        } catch (e) {
+            setSignedoutBox();
+            return null;
+        }
+        
+        credential.retrievePassword();
+
+        hyperlapseClient.currentUser = {
+            
+            userId: credential.userName,
+            mobileServiceAuthenticationToken: credential.password
+        };
+
+        return testCredential(credential);
+    };
 
     /**
     Random shit to delete in production
