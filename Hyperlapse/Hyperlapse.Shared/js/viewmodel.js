@@ -66,28 +66,66 @@
     /**
     Render sign in box
     */
-    var setSignedinBox = function() {
+    HL.setSignedinBox = function() {
 
         var template = $("#signedinTemplate")[0],
             context = userData,
-            root = $(".signstatus")[0];
+            root = $(".signstatus")[0],
+            flyout = null;
+
+        if (!HL.isPhone) {
+
+            flyout = $(".loggedinflyout")[0];
+            setFlyout(flyout, root);
+        }
 
         WinJS.Utilities.empty(root);
 
-        template.winControl.render(context, root);
+        return template.winControl.render(context, root).then(function(el) {
+
+            WinJS.Resources.processAll(root);
+
+            var sel = el.querySelector(".sign");
+
+            sel.addEventListener("pointerdown", function (e) {
+
+                WinJS.UI.Animation.pointerDown(e.srcElement);
+
+                if (HL.isPhone) {
+                    WinJS.Navigation.navigate("/pages/login/login.html");
+                } else {
+                    flyout.winControl.show(sel, "bottom");
+                }
+            });
+
+            sel.addEventListener("pointerup", function (e) {
+
+                WinJS.UI.Animation.pointerUp(e.srcElement);
+            });
+        }).done(function() {
+
+            $("#logoutUser").listen("click", function() {
+
+                HL.logout();
+            });
+        });
     };
 
     /**
     Render sign out box
     */
-    var setSignedoutBox = function () {
+    HL.setSignedoutBox = function () {
 
         var template = $("#signedoutTemplate")[0],
             context = {},
             root = $(".signstatus")[0],
-            flyout = $(".loginflyout")[0];
+            flyout = null;
 
-        setFlyout(flyout, root);
+        if (!HL.isPhone) {
+
+            flyout = $(".loginflyout")[0];
+            setFlyout(flyout, root);
+        }
 
         WinJS.Utilities.empty(root);
 
@@ -100,7 +138,12 @@
             sel.addEventListener("pointerdown", function (e) {
 
                 WinJS.UI.Animation.pointerDown(e.srcElement);
-                flyout.winControl.show(sel, "bottom");
+
+                if (HL.isPhone) {
+                    WinJS.Navigation.navigate("/pages/login/login.html");
+                } else {
+                    flyout.winControl.show(sel, "bottom");
+                }
             });
 
             sel.addEventListener("pointerup", function (e) {
@@ -124,7 +167,7 @@
         var handleData = function (response) {
 
             userData = response.result;
-            setSignedinBox();
+            HL.setSignedinBox();
 
             /**
             Set Roaming Data
@@ -140,6 +183,7 @@
         var handleDataError = function (err) {
 
             showDialog("An Error Occured During login", "Couldn't fetch your data, try again");
+            HL.logout();
             console.log(err);
         };
 
@@ -195,6 +239,7 @@
 
                 showDialog("An Error Occured during Login", "Could not log you in, try again");
             }
+            console.log(err);
         };
 
         hyperlapseClient.login(client).then(handleSuccess, handleError);
@@ -218,10 +263,10 @@
 
             if (HL.isPhone) {
 
-                HL.phone.setup();
+                return HL.phone.setup();
             } else {
 
-                HL.desktop.setup();
+                return HL.desktop.setup();
             }
         }).then(function() {
 
@@ -243,7 +288,6 @@
     */
     HL.desktop.setup = function () {
 
-        
         var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
 
         $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
@@ -275,14 +319,14 @@
             */
             var data = roamingSettings.values["userData"];
 
-            if (data.firstname) {
+            if (data && data.firstname) {
                 userData = {
                     firstname: data.firstname,
                     lastname: data.lastname,
                     img: data.img
                 };
                 HL.signedIn = true;
-                return setSignedinBox();
+                return HL.setSignedinBox();
             } else {
                 return getUserData();
             }
@@ -293,7 +337,7 @@
             */
             vault.remove(credential);
             hyperlapseClient.currentUser = null;
-            return setSignedoutBox();
+            return HL.setSignedoutBox();
         });
     };
 
@@ -307,10 +351,10 @@
         try {
             credential = vault.findAllByResource("Login").getAt(0);
         } catch (e) {
-            setSignedoutBox();
-            return null;
+            return HL.setSignedoutBox();
         }
-        
+
+        console.log("signing in...");
         credential.retrievePassword();
 
         hyperlapseClient.currentUser = {
@@ -320,6 +364,26 @@
         };
 
         return testCredential(credential);
+    };
+
+    /**
+    log a user out
+    */
+    HL.logout = function() {
+
+        try {
+
+            var credential = vault.findAllByResource("Login").getAt(0);
+        } catch (e) {
+
+            return null;
+        }
+
+        vault.remove(credential);
+        roamingSettings.values.remove("userData");
+        HL.setSignedoutBox();
+        HL.signedIn = false;
+        userData = null;
     };
 
     /**

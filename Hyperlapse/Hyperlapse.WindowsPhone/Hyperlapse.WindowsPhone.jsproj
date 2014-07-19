@@ -67,6 +67,9 @@
     <Content Include="css\ui-themed.css" />
     <Content Include="css\ui-themed.theme-dark.css" />
     <Content Include="css\ui-themed.theme-light.css" />
+    <Content Include="pages\login\login.css" />
+    <Content Include="pages\login\login.html" />
+    <Content Include="pages\login\login.js" />
     <Content Include="services\mobile services\hyperlapse\service.js">
       <ConnectedServiceReference>hyperlapse</ConnectedServiceReference>
     </Content>

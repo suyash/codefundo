@@ -81,7 +81,18 @@
 
                 _navigated: function () {
                     this.pageElement.style.visibility = "";
-                    WinJS.UI.Animation.enterPage(this._getAnimationElements()).done();
+
+                    if (HL.isPhone) {
+                        WinJS.UI.Animation.turnstileBackwardIn(this._getAnimationElements()).done();
+                    } else {
+                        WinJS.UI.Animation.enterPage(this._getAnimationElements()).done();
+                    }
+
+                    if (HL.signedIn) {
+                        HL.setSignedinBox();
+                    } else {
+                        HL.setSignedoutBox();
+                    }
                 },
 
                 // Responds to navigation by adding new pages to the DOM. 

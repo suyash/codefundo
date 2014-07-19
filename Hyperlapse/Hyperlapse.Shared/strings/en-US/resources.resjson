@@ -18,5 +18,8 @@
 	"SigninFacebook": "Facebook",
 	"SigninTwitter": "Twitter",
 	"SigninGoogle": "Google",
-	"SigninMS": "Microsoft Account"
+	"SigninMS": "Microsoft Account",
+
+	"SignedinProfile": "Profile",
+	"SignedinLogout": "Logout"
 }

@@ -110,12 +110,16 @@
     	text-align: center;
     }
 
-    .loginflyout.win-menu {
+    .logflyout.win-menu {
     	border-color: white;
     	background-color: rgba(255, 255, 255, 0.6);
     	width: 300px;
     	margin-left: -86px;
     	margin-top: -2px;
+    }
+
+    .section1 {
+    	padding-right: 80px;
     }
 
     #loginHeader {

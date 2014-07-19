@@ -1,0 +1,87 @@
+﻿.login section {
+	margin: auto 120px;
+}
+
+.phone .login .page-section {
+	margin: auto 24px;
+}
+
+.phone .login .page-header .titlearea {
+	-ms-grid-column: 1;
+	margin-top: 37px;
+	margin-left: 24px;
+	font-size: 28pt;
+	width: calc(100vw - 20px);
+}
+
+.phone .login .back-button {
+	display: none;
+}
+
+.login.fragment {
+	-ms-grid-columns: 1fr;
+	-ms-grid-rows: 128px 1fr;
+	display: -ms-grid;
+	height: 100%;
+	width: 100%;
+}
+
+	.login.fragment section[role=main] {
+		-ms-grid-row: 2;
+		height: 100%;
+	}
+
+	.login.fragment .signstatus {
+		display: none;
+	}
+
+	.login.fragment .page-section {
+		display: -ms-grid;
+		-ms-grid-columns: 1fr;
+		-ms-grid-rows: 40px 90px 90px 90px 90px 1fr;
+	}
+
+	#loginMSContainer {
+		-ms-grid-column: 1;
+		-ms-grid-row: 2;
+	}
+
+	#loginTwitterContainer {
+		-ms-grid-row: 3;
+		-ms-grid-column: 1;
+	}
+
+	#loginGoogleContainer {
+		-ms-grid-column: 1;
+		-ms-grid-row: 4;
+	}
+
+	#loginFacebookContainer {
+		-ms-grid-column: 1;
+		-ms-grid-row: 5;
+	}
+
+	.logincontainer {
+		text-align: center;
+	}
+
+	.loginbutton {
+		width: 100%;
+		height: 60px;
+	}
+
+	#loginMS {
+		background-color: royalblue;
+	}
+
+	#loginTwitter {
+		background-color: cyan;
+	}
+
+	#loginGoogle {
+		background-color: red;
+	}
+
+	#loginFacebook {
+		background-color: darkblue;
+	}

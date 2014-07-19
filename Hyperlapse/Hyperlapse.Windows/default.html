@@ -36,6 +36,9 @@
              data-win-control="Application.PageControlNavigator" 
              data-win-options="{home: '/pages/hub/hub.html'}"></div>
     </section>
+    <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
+    </div> -->
     <div id="signedoutTemplate" data-win-control="WinJS.Binding.Template">
         <a href="#" class="signedout sign">
             <div class="signimageholder">
@@ -58,7 +61,7 @@
             </div>
         </a>
     </div>
-    <div class="loginflyout" data-win-control="WinJS.UI.Menu">
+    <div class="loginflyout logflyout" data-win-control="WinJS.UI.Menu">
         <button class="loginheader"
                 data-win-control="WinJS.UI.MenuCommand"
                 data-win-options="{ id: 'loginHeader', disabled: true }"
@@ -80,8 +83,15 @@
                 data-win-options="{ id: 'loginFacebook' }"
                 data-win-res="{ winControl: { label: 'SigninFacebook' }}"></button>
     </div>
-    <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
-        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
-    </div> -->
+    <div class="loggedinflyout logflyout" data-win-control="WinJS.UI.Menu">
+        <button class="loginbutton"
+                data-win-control="WinJS.UI.MenuCommand"
+                data-win-options="{ id: 'accountUser' }"
+                data-win-res="{ winControl: { label: 'SignedinProfile' }}"></button>
+        <button class="loginbutton"
+                data-win-control="WinJS.UI.MenuCommand"
+                data-win-options="{ id: 'logoutUser' }"
+                data-win-res="{ winControl: { label: 'SignedinLogout' }}"></button>
+    </div>
 </body>
 </html>

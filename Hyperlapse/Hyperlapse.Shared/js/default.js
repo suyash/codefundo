@@ -23,7 +23,7 @@
 
             HL.setup().done(function() {
 
-                HL.hideSplash();
+                return HL.hideSplash();
             });
 
             success();
