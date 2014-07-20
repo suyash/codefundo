@@ -46,6 +46,9 @@
         },
 
         unload: function () {
+
+            $("#localcontenthost").removeClass("onmapper");
+            HL.$appbar.addClass("hidden");
         },
 
         updateLayout: function (element) {

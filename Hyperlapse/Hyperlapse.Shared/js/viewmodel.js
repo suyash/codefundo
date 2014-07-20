@@ -78,6 +78,7 @@
     */
     HL.setSignedinBox = function() {
 
+        HL.signedIn = true;
         var template = $("#signedinTemplate")[0],
             context = userData,
             root = $(".signstatus")[0],
@@ -126,6 +127,7 @@
     */
     HL.setSignedoutBox = function () {
 
+        HL.signedIn = false;
         var template = $("#signedoutTemplate")[0],
             context = {},
             root = $(".signstatus")[0],
@@ -354,7 +356,6 @@
                     lastname: data.lastname,
                     img: data.img
                 };
-                HL.signedIn = true;
                 return HL.setSignedinBox();
             } else {
                 return getUserData();
@@ -411,7 +412,6 @@
         vault.remove(credential);
         roamingSettings.values.remove("userData");
         HL.setSignedoutBox();
-        HL.signedIn = false;
         userData = null;
     };
 
