@@ -1,6 +1,6 @@
 ﻿#localcontenthost.onmapper {
 	height: 128px;
-	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 .mapper.fragment {

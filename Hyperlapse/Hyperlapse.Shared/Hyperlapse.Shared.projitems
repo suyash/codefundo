@@ -17,6 +17,9 @@
     <Content Include="$(MSBuildThisFileDirectory)images\heroImages\7.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)images\heroImages\8.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)images\heroImages\9.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)images\markers\end.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\markers\lookat.png" />
+    <Content Include="$(MSBuildThisFileDirectory)images\markers\start.png" />
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\messages.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\navigator.js" />

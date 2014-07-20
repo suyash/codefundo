@@ -14,6 +14,7 @@
         ready: function (element, options) {
             
             $("#localcontenthost").addClass("onmapper");
+            HL.$appbar[0].winControl.show();
         },
 
         unload: function () {

@@ -1,3 +1,27 @@
-﻿body {
+﻿#webcontext {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: #aaa;
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    display: none;
+    height: 100%;
+}
+
+.container.active {
+    display: block;
+}
+
+#mapcontainer {
+    height: 100%;
+}
+
+#map {
+    height: 100%;
 }
