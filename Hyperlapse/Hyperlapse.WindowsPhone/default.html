@@ -35,14 +35,102 @@
                 </div>
             </div>
         </div>
-        <div id="contenthost"
-             data-win-control="Application.PageControlNavigator"
-             data-win-options="{home: '/pages/hub/hub.html'}">
+        <div id="contenthost">
+            <div id="webcontenthost"
+                 class="contenthostblock">
+                <x-ms-webview class="webview invisible"></x-ms-webview>
+            </div>
+            <div id="localcontenthost"
+                 class="contenthostblock"
+                 data-win-control="Application.PageControlNavigator"
+                 data-win-options="{home: '/pages/hub/hub.html'}"></div>
         </div>
     </section>
-    <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
-        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
-    </div> -->
+    <div id="appbar"
+         class="hidden"
+         data-win-control="WinJS.UI.AppBar"
+         data-win-options="{ 
+            layout: 'custom' 
+        }">
+        <button class="signedoutblock loginbutton"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'loginHeader',
+                    section: 'selection',
+                    disabled: true
+                }"
+                data-win-res="{
+                    winControl: {
+                        label: 'SigninHeader'
+                    }
+                }"></button>
+        <button class="signedoutblock loginbutton"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'loginMS',
+                    section: 'selection'
+                }"
+                data-win-res="{
+                    winControl: {
+                        label: 'SigninMS'
+                    }
+                }"></button>
+        <button class="signedoutblock loginbutton"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'loginTwitter',
+                    section: 'selection'
+                }"
+                data-win-res="{
+                    winControl: {
+                        label: 'SigninTwitter'
+                    }
+                }"></button>
+        <button class="signedoutblock loginbutton"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'loginGoogle',
+                    section: 'selection'
+                }"
+                data-win-res="{
+                    winControl: {
+                        label: 'SigninGoogle'
+                    }
+                }"></button>
+        <button class="signedoutblock loginbutton"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'loginFacebook',
+                    section: 'selection'
+                }"
+                data-win-res="{
+                    winControl: {
+                        label: 'SigninFacebook'
+                    }
+                }"></button>
+        <button class="signedinblock loginbutton"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'accountUser',
+                    section: 'selection'
+                }"
+                data-win-res="{
+                    winControl: {
+                        label: 'SignedinProfile'
+                    }
+                }"></button>
+        <button class="signedinblock loginbutton"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'logoutUser',
+                    section: 'selection'
+                }"
+                data-win-res="{
+                    winControl: {
+                        label: 'SignedinLogout'
+                    }
+                }"></button>
+    </div>
     <div id="signedoutTemplate" data-win-control="WinJS.Binding.Template">
         <button class="signedout sign">
             <div class="signtextholder">
@@ -53,6 +141,9 @@
     </div>
     <div id="signedinTemplate" data-win-control="WinJS.Binding.Template">
         <button class="signedin sign">
+            <div class="signimageholder">
+                <img class="signimage signedinimage" data-win-bind="src: img" />
+            </div>
             <div class="signtextholder">
                 <div class="signedinheader signheader" data-win-bind="innerHTML: firstname"></div>
                 <div class="signedinmain signmain" data-win-bind="innerHTML: lastname"></div>

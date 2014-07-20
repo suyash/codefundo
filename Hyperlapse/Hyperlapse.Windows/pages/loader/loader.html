@@ -12,12 +12,40 @@
         <header class="page-header" aria-label="Header content" role="banner">
             <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
             <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to loader</span>
+                <span class="pagetitle" data-win-bind="innerHTML: title"></span>
             </h1>
             <div class="signstatus"></div>
         </header>
         <section class="page-section" aria-label="Main content" role="main">
-            <p>Content goes here.</p>
+            <div class="loaderdata">
+                <div class="info">
+                    <div class="coords">
+                        <div class="row1">Start</div>
+                        <div style="-ms-grid-column: 2; -ms-grid-row: 1;">
+                            <span data-win-bind="innerHTML: startlat"></span>
+                            <span data-win-bind="innerHTML: startlong"></span>
+                        </div>
+                        <div style="-ms-grid-column: 1; -ms-grid-row: 2;">End</div>
+                        <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                            <span data-win-bind="innerHTML: endlat"></span>
+                            <span data-win-bind="innerHTML: endlong"></span>
+                        </div>
+                        <div style="-ms-grid-column: 1; -ms-grid-row: 3;">Lookat</div>
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 2;">
+                            <span data-win-bind="innerHTML: lookatlat"></span>
+                            <span data-win-bind="innerHTML: lookatlong"></span>
+                        </div>
+                    </div>
+                    <div class="loadedValue">
+                        <div>
+                            <span data-win-bind="innerHTML: progress"></span><span>%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pic">
+                    <img data-win-bind="src: previewimageurl" />
+                </div>
+            </div>
         </section>
     </div>
 </body>

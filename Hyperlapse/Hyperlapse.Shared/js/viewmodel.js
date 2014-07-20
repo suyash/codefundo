@@ -42,6 +42,11 @@
     };
 
     /**
+    currentlyLoading, wlll store the data for currently loading hyperlapse request
+    */
+    HL.currentLyLoading = null;
+
+    /**
     top presets from azure
     */
     HL.topPresets = null;
@@ -93,6 +98,9 @@
 
             flyout = $(".loggedinflyout")[0];
             setFlyout(flyout, root);
+        } else {
+            $("#appbar")[0][0].winControl.hideCommands([loginHeader, loginMS, loginTwitter, loginGoogle, loginFacebook]);
+            $("#appbar")[0][0].winControl.showCommands([accountUser, logoutUser]);
         }
 
         WinJS.Utilities.empty(root);
@@ -108,7 +116,7 @@
                 WinJS.UI.Animation.pointerDown(e.srcElement);
 
                 if (HL.isPhone) {
-                    WinJS.Navigation.navigate("/pages/login/login.html");
+                    HL.$appbar[0].winControl.show();
                 } else {
                     flyout.winControl.show(sel, "bottom");
                 }
@@ -147,6 +155,9 @@
 
             flyout = $(".loginflyout")[0];
             setFlyout(flyout, root);
+        } else {
+            $("#appbar")[0].winControl.showCommands([loginHeader, loginMS, loginTwitter, loginGoogle, loginFacebook]);
+            $("#appbar")[0].winControl.hideCommands([accountUser, logoutUser]);
         }
 
         WinJS.Utilities.empty(root);
@@ -162,7 +173,7 @@
                 WinJS.UI.Animation.pointerDown(e.srcElement);
 
                 if (HL.isPhone) {
-                    WinJS.Navigation.navigate("/pages/login/login.html");
+                    HL.$appbar[0].winControl.show();
                 } else {
                     flyout.winControl.show(sel, "bottom");
                 }
@@ -340,7 +351,10 @@
     /**
     Phone mode specific setup options
     */
-    HL.phone.setup = function () {};
+    HL.phone.setup = function() {
+
+        Windows.UI.ViewManagement.ApplicationView.getForCurrentView().setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useCoreWindow);
+    };
 
     /**
     signed in flag, true for a signed in user

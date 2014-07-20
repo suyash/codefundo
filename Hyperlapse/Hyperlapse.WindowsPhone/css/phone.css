@@ -34,3 +34,7 @@
 		.fragment header[role=banner] .titlearea .pagetitle {
 			width: calc(100% - 20px);
 		}
+
+#appbar {
+    background-color: rgba(255, 255, 255, 0.2);
+}

@@ -60,6 +60,14 @@
 		margin-left: 0;
     }
 
+    .hubpage .previewsection .preview {
+		background-image: url('https://ecce1d291b455d4931046de056c9e7583c9c96ff.googledrive.com/host/0B3gomzciSBpOYThjNC1iTXJNY00/1.jpg');
+    }
+
+    .hubpage .mappersection .preview {
+		background-image: url('https://ecce1d291b455d4931046de056c9e7583c9c96ff.googledrive.com/host/0B3gomzciSBpOYThjNC1iTXJNY00/2.png');
+    }
+
     .hubpage .previewimage {
     	height: 100%;
     }
@@ -120,46 +128,6 @@
 
     .section1 {
     	padding-right: 80px;
-    }
-
-    #loginHeader {
-    	color: black;
-    }
-
-    #loginMS {
-    	color: royalblue;
-    }
-
-    #loginMS:hover {
-    	color: white;
-    	background-color: royalblue;
-    }
-
-    #loginTwitter {
-    	color: cyan;
-    }
-
-    #loginTwitter:hover {
-    	color: white;
-    	background-color: cyan;
-    }
-
-    #loginGoogle {
-    	color: red;
-    }
-
-    #loginGoogle:hover {
-    	color: white;
-    	background-color: red;
-    }
-
-    #loginFacebook {
-    	color: darkblue;
-    }
-
-    #loginFacebook:hover {
-    	color: white;
-    	background-color: darkblue;
     }
 		
 .label-extralarge {

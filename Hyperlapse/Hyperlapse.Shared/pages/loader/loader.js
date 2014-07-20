@@ -3,24 +3,35 @@
 
     WinJS.UI.Pages.define("/pages/loader/loader.html", {
 
+        init: function(element, options) {
+
+            if (!HL.currentLyLoading) {
+
+                HL.currentlyLoading = WinJS.Binding.as(options);
+                HL.currentlyLoading.progress = 0;
+                HL.sendMessage();
+            }
+        },
+
         processed: function(element) {
 
-            WinJS.Binding.processAll(element, {});
-            WinJS.Resources.processAll(element);
+            return WinJS.Binding.processAll(element, HL.currentlyLoading).then(function() {
+
+                return WinJS.Resources.processAll();
+            });
         },
 
         ready: function (element, options) {
-            // TODO: Initialize the page here.
+
+            var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
+
+            $(".loader").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
         },
 
         unload: function () {
-            // TODO: Respond to navigations away from this page.
         },
 
         updateLayout: function (element) {
-            /// <param name="element" domElement="true" />
-
-            // TODO: Respond to changes in layout.
         }
     });
 })();

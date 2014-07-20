@@ -23,11 +23,13 @@
 
                 previewlist.addEventListener("iteminvoked", function(e) {
 
-                    WinJS.Navigation.navigate("/pages/loader/loader.html", HL.topPresets[e.detail.itemIndex]);
+                    var index = e.detail.itemIndex;
+
+                    WinJS.Navigation.navigate("/pages/loader/loader.html", HL.topPresets.getAt(index));
                 });
             }, function (error) {
 
-                console.log("Cannot get top presets", err);
+                console.log("Cannot get top presets", error);
             }).then(function() {
                 
                 return WinJS.Resources.processAll(element);
@@ -53,6 +55,11 @@
 
                     hub.onloadingstatechanged = null;
                 }
+            }
+
+            if (HL.isPhone) {
+
+                $("#appbar").removeClass("hidden");
             }
         },
 

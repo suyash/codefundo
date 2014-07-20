@@ -18,15 +18,51 @@
 	display: none;
 }
 
-.fragment {
+.loader.fragment {
 	-ms-grid-columns: 1fr;
 	-ms-grid-rows: 128px 1fr;
 	display: -ms-grid;
 	height: 100%;
 	width: 100%;
+    background-size: cover;
 }
 
-	.fragment section[role=main] {
-		-ms-grid-row: 2;
-		height: 100%;
-	}
+.loader.fragment section[role=main] {
+	-ms-grid-row: 2;
+	height: 100%;
+}
+
+.loaderdata {
+	display: -ms-grid;
+	-ms-grid-rows: 40px 1fr;
+	-ms-grid-columns: 400px 1fr;
+}
+
+.info {
+	-ms-grid-column: 1;
+	-ms-grid-row: 2;
+}
+
+.pic {
+	-ms-grid-column: 2;
+	-ms-grid-row: 2;
+	overflow: hidden;
+	border: 2px solid white;
+}
+
+.coords {
+	display: -ms-grid;
+	-ms-grid-rows: 1fr 1fr 1fr;
+	-ms-grid-columns: 1fr 2fr;
+	font-size: 1.4em;
+}
+
+.loadedValue {
+	font-size: 8em;
+	text-align: center;
+	padding-top: 40px;
+}
+
+.row1 {
+	-ms-grid-column: 1;
+}

@@ -18,6 +18,8 @@
             HL.$appbar.removeClass("hidden");
             HL.$appbar.query(".appbarcommand").addClass("hidden");
             HL.$appbar.query(".mappercommand").removeClass("hidden");
+
+            $(".webview").removeClass("invisible");
         },
 
         ready: function (element, options) {
@@ -49,6 +51,8 @@
 
             $("#localcontenthost").removeClass("onmapper");
             HL.$appbar.addClass("hidden");
+
+            $(".webview").removeClass("invisible");
         },
 
         updateLayout: function (element) {
