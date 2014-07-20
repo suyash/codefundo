@@ -32,6 +32,16 @@
     HL.phone = {};
 
     /**
+    marker locations
+    */
+    HL.markerLocations = {
+        
+        start: [29.8644, 77.8964],
+        end: [29.8644, 77.8964],
+        lookAt: [29.8644, 77.8964]
+    };
+
+    /**
     Number of background images, one is loaded randomly on startup
     */
     HL.desktop.backImageCount = 5;
@@ -426,8 +436,21 @@
         if (d.callingUri === "ms-appx-web://48773grey93.hyperlapse/Web/html/main.html") {
 
             var data = JSON.parse(d.value);
+            console.log(data.data);
 
-            console.log(data);
+            switch (data.id) {
+                case Message.Local.START_CHANGED:
+                    HL.markerLocations.start = data.data;
+                    break;
+                case Message.Local.END_CHANGED:
+                    HL.markerLocations.end = data.data;
+                    break;
+                case Message.Local.LOOKAT_CHANGED:
+                    HL.markerLocations.lookat = data.data;
+                    break;
+                default:
+                    console.log("No local handler for event with id", data.id);
+            }
         }
     };
 

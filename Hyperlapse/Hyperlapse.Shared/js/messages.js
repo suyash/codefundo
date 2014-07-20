@@ -11,6 +11,9 @@
 
     Message.Local = {
         
-        MAP_SHOWN: 2
+        MAP_SHOWN: 2,
+        START_CHANGED: 3,
+        END_CHANGED: 4,
+        LOOKAT_CHANGED: 5
     };
 })();

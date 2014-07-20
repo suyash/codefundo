@@ -4,8 +4,17 @@
     WinJS.UI.Pages.define("/pages/mapper/mapper.html", {
 
         init: function(element, options) {
-            
-            HL.sendMessage(Message.Web.SHOW_MAP, options);
+
+            var o = HL.markerLocations;
+
+            if (o.start[0] === o.end[0] && o.start[1] === o.end[1]) {
+
+                o = {
+                    center: HL.markerLocations.start
+                }
+            }
+
+            HL.sendMessage(Message.Web.SHOW_MAP, o);
             HL.$appbar.removeClass("hidden");
             HL.$appbar.query(".appbarcommand").addClass("hidden");
             HL.$appbar.query(".mappercommand").removeClass("hidden");
