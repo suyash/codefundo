@@ -436,7 +436,6 @@
         if (d.callingUri === "ms-appx-web://48773grey93.hyperlapse/Web/html/main.html") {
 
             var data = JSON.parse(d.value);
-            console.log(data.data);
 
             switch (data.id) {
                 case Message.Local.START_CHANGED:
