@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>profile</title>
+
+    <link href="profile.css" rel="stylesheet" />
+    <script src="profile.js"></script>
+</head>
+<body>
+    <div class="profile fragment">
+        <header class="page-header" aria-label="Header content" role="banner">
+            <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
+            <div class="signstatus"></div>
+        </header>
+        <section class="page-section" aria-label="Main content" role="main">
+            <div class="profile-data">
+                <div class="profile-pic">
+                    <img data-win-bind="src: img" alt="profile pic" />
+                </div>
+                <h1 class="profile-name">
+                    <span class="profile-firstname" data-win-bind="innerHTML: firstname"></span>
+                    <span class="profile-lastname" data-win-bind="innerHTML: lastname"></span>
+                </h1>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

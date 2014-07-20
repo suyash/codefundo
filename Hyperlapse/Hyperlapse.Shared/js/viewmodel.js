@@ -124,6 +124,11 @@
 
                 HL.logout();
             });
+
+            $("#accountUser").listen("click", function() {
+
+                nav.navigate("/pages/profile/profile.html");
+            });
         });
     };
 
@@ -183,7 +188,7 @@
         
         var handleData = function (response) {
 
-            userData = response.result;
+            userData = WinJS.Binding.as(response.result);
             HL.setSignedinBox();
 
             /**
@@ -359,11 +364,11 @@
             var data = roamingSettings.values["userData"];
 
             if (data && data.firstname) {
-                userData = {
+                userData = WinJS.Binding.as({
                     firstname: data.firstname,
                     lastname: data.lastname,
                     img: data.img
-                };
+                });
                 return HL.setSignedinBox();
             } else {
                 return getUserData();
@@ -460,6 +465,14 @@
             }
         }
     };
+
+    /**
+    get current user
+    */
+    HL.getCurrentUser = function() {
+
+        return userData;
+    }
 
     /**
     Random shit to delete in production

@@ -1,0 +1,57 @@
+﻿.profile section {
+	margin: auto 120px;
+}
+
+.phone .profile .page-section {
+	margin: auto 24px;
+}
+
+.phone .profile .page-header .titlearea {
+	-ms-grid-column: 1;
+	margin-top: 37px;
+	margin-left: 24px;
+	font-size: 28pt;
+	width: calc(100vw - 20px);
+}
+
+.phone .profile .back-button {
+	display: none;
+}
+
+.profile.fragment {
+	-ms-grid-columns: 1fr;
+	-ms-grid-rows: 128px 1fr;
+	display: -ms-grid;
+	height: 100%;
+	width: 100%;
+}
+
+	.profile.fragment section[role=main] {
+		-ms-grid-row: 2;
+		height: 100%;
+	}
+
+.profile-data {
+
+    display: -ms-grid;
+    -ms-grid-rows: 100px 1fr;
+    -ms-grid-columns: 100px 500px;
+}
+
+.profile-pic {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    border: 2px solid white;
+}
+
+.profile-pic img {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.profile-name {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    margin-top: 25px;
+    margin-left: 40px;
+}

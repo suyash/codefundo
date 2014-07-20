@@ -13,14 +13,18 @@
             get top presets from azure
             */
             var presets = hyperlapseClient.getTable("presets");
+            var previewlist =  $(".previewlist > div")[0];
 
             return presets.take(5).read().then(function (results) {
 
                 HL.topPresets = new WinJS.Binding.List(results);
 
-                var list = $(".previewlist > div")[0];
+                previewlist.winControl.itemDataSource = HL.topPresets.dataSource;
 
-                list.winControl.itemDataSource = HL.topPresets.dataSource;
+                previewlist.addEventListener("iteminvoked", function(e) {
+
+                    WinJS.Navigation.navigate("/pages/loader/loader.html", HL.topPresets[e.detail.itemIndex]);
+                });
             }, function (error) {
 
                 console.log("Cannot get top presets", err);

@@ -26,7 +26,9 @@
     <Content Include="$(MSBuildThisFileDirectory)js\viewmodel.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\hub\hub.js" />
     <Content Include="$(MSBuildThisFileDirectory)images\gray.png" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\loader\loader.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\mapper\mapper.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\profile\profile.js" />
     <Content Include="$(MSBuildThisFileDirectory)Web\css\main.css" />
     <Content Include="$(MSBuildThisFileDirectory)Web\html\main.html" />
     <Content Include="$(MSBuildThisFileDirectory)Web\js\main.js" />
