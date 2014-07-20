@@ -18,10 +18,15 @@
     <Content Include="$(MSBuildThisFileDirectory)images\heroImages\8.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)images\heroImages\9.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\messages.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\navigator.js" />
     <Content Include="$(MSBuildThisFileDirectory)js\viewmodel.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\hub\hub.js" />
     <Content Include="$(MSBuildThisFileDirectory)images\gray.png" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\mapper\mapper.js" />
+    <Content Include="$(MSBuildThisFileDirectory)Web\css\main.css" />
+    <Content Include="$(MSBuildThisFileDirectory)Web\html\main.html" />
+    <Content Include="$(MSBuildThisFileDirectory)Web\js\main.js" />
     <PRIResource Include="$(MSBuildThisFileDirectory)strings\en-US\resources.resjson" />
   </ItemGroup>
 </Project>

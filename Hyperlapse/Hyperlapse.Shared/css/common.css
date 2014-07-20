@@ -331,6 +331,9 @@
 #contenthost {
     height: 100%;
     width: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
 }
 
     #splashContainer {

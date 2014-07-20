@@ -16,6 +16,10 @@
 
             var hub = element.querySelector(".hub").winControl;
 
+            var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
+
+            $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
+
             hub.onheaderinvoked = function (args) {
 
                 args.detail.section.onheaderinvoked(args);
@@ -39,5 +43,13 @@
 
             // TODO: Respond to changes in layout.
         },
+
+        /**
+        Called when mapper is invoked
+        */
+        onMapperInvoked: util.markSupportedForProcessing(function () {
+
+            nav.navigate("/pages/mapper/mapper.html");
+        })
     });
 })();

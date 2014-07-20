@@ -246,6 +246,16 @@
     };
 
     /**
+    The web context holder
+    */
+    var webview = null;
+
+    /**
+    cache the appbar element
+    */
+    HL.$appbar = null;
+
+    /**
     common setup operations
     */
     HL.setup = function () {
@@ -260,6 +270,12 @@
 
             ui.enableAnimations();
         }).then(function () {
+            /**
+            common setup options
+            */
+            HL.$appbar = $("#appbar");
+            WinJS.Resources.processAll(HL.$appbar[0]);
+        }).then(function () {
 
             if (HL.isPhone) {
 
@@ -271,6 +287,14 @@
         }).then(function() {
 
             return HL.checkSigninStatus();
+        }).then(function() {
+            
+            /**
+            set webview
+            */
+            webview = $(".webview")[0];
+            webview.navigate("ms-appx-web:///Web/html/main.html");
+            webview.addEventListener("MSWebViewScriptNotify", HL.receiveMessage);
         });
     };
 
@@ -286,12 +310,7 @@
     /**
     Desktop mode specific setup options
     */
-    HL.desktop.setup = function () {
-
-        var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
-
-        $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
-    };
+    HL.desktop.setup = function () {};
 
     /**
     Phone mode specific setup options
@@ -384,6 +403,32 @@
         HL.setSignedoutBox();
         HL.signedIn = false;
         userData = null;
+    };
+
+    /**
+    send a message
+    */
+    HL.sendMessage = function (id, data) {
+
+        data = data || {};
+
+        webview.invokeScriptAsync("receiveMessage", JSON.stringify({
+            id: id,
+            data: data
+        })).start();
+    };
+
+    /**
+    receive a message
+    */
+    HL.receiveMessage = function(d) {
+
+        if (d.callingUri === "ms-appx-web://48773grey93.hyperlapse/Web/html/main.html") {
+
+            var data = JSON.parse(d.value);
+
+            console.log(data);
+        }
     };
 
     /**

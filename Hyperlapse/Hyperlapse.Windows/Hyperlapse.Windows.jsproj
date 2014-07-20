@@ -76,6 +76,8 @@
     <Content Include="packages.config" />
     <Content Include="pages\hub\hub.html" />
     <Content Include="pages\hub\hub.css" />
+    <Content Include="pages\mapper\mapper.css" />
+    <Content Include="pages\mapper\mapper.html" />
     <Content Include="services\mobile services\hyperlapse\service.js">
       <ConnectedServiceReference>hyperlapse</ConnectedServiceReference>
     </Content>

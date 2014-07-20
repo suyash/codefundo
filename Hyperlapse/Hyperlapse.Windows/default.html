@@ -16,6 +16,7 @@
     <!-- Hyperlapse references -->
     <link href="/css/common.css" rel="stylesheet" />
     <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/messages.js"></script>
     <script src="/js/navigator.js"></script>
     <script src="/js/viewmodel.js"></script>
     <script src="/js/default.js"></script>
@@ -32,13 +33,35 @@
                 </div>
             </div>
         </div>
-        <div id="contenthost" 
-             data-win-control="Application.PageControlNavigator" 
-             data-win-options="{home: '/pages/hub/hub.html'}"></div>
+        <div id="contenthost">
+            <div id="webcontenthost"
+                 class="contenthostblock">
+                <x-ms-webview class="webview"></x-ms-webview>
+            </div>
+            <div id="localcontenthost"
+                 class="contenthostblock"
+                 data-win-control="Application.PageControlNavigator"
+                 data-win-options="{home: '/pages/hub/hub.html'}"></div>
+        </div>
     </section>
-    <!-- <div id="appbar" data-win-control="WinJS.UI.AppBar">
-        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
-    </div> -->
+    <div id="appbar"
+         class="hidden"
+         data-win-control="WinJS.UI.AppBar"
+         data-win-options="{
+             layout: 'custom'
+         }">
+        <button class="mappercommand hidden appbarcommand"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'launchhlcommand',
+                    icon: 'right'
+                }"
+                data-win-res="{ 
+                    winControl: {
+                        label: 'LaunchHL'
+                    }
+                }"></button>
+    </div>
     <div id="signedoutTemplate" data-win-control="WinJS.Binding.Template">
         <a href="#" class="signedout sign">
             <div class="signimageholder">
