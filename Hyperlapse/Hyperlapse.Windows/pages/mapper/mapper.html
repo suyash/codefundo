@@ -12,7 +12,12 @@
         <header class="page-header" aria-label="Header content" role="banner">
             <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
             <div id="mappersearch"
-                 data-win-control="WinJS.UI.SearchBox"></div>
+                 data-win-control="WinJS.UI.SearchBox"
+                 data-win-options="{
+                     chooseSuggestionOnEnter: false,
+                     placeholderText: 'Enter a Location',
+                     focusOnKeyboardInput: true
+                 }"></div>
             <div class="signstatus"></div>
         </header>
     </div>

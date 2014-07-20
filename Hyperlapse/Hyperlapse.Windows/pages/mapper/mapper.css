@@ -35,3 +35,17 @@
 		-ms-grid-row: 2;
 		height: 100%;
 	}
+
+	#mappersearch {
+		-ms-grid-column: 3;
+		-ms-grid-row: 1;
+		margin: 50px auto 0px;
+	}
+
+	.mapper .signstatus .sign {
+		margin-top: 23px;
+	}
+
+	.mapper header[role="banner"] .win-navigation-backbutton {
+		margin-top: 43px;
+	}

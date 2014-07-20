@@ -25,7 +25,8 @@
             routeIndex: 0,
             suppressInfoWindows: true
         }),
-        panoramiolayer = new maps.panoramio.PanoramioLayer();
+        panoramiolayer = new maps.panoramio.PanoramioLayer(),
+        geocoder = new maps.Geocoder();
 
     /**
     one time initialization on load
@@ -298,6 +299,27 @@
         }
     };
 
+    /**
+    geocode map with query
+    */
+    var geocodeMap = function(data) {
+
+        var query = data.query;
+
+        geocoder.geocode({
+            address: query
+        }, function(response, status) {
+
+            if (status === maps.GeocoderStatus.OK) {
+
+                map.setCenter(response[0].geometry.location);
+                setMarkerWithCenter();
+            }
+        });
+    };
+
+    var getSuggestions = function(data) {};
+
     window.sendMessage = function (id, data) {
 
         data = data || {};
@@ -317,8 +339,16 @@
         switch (data.id) {
 
             case Message.Web.SHOW_MAP:
-                showMap(data);
+                showMap(data.data);
                 break;
+            case Message.Web.SEARCH_MAP:
+                geocodeMap(data.data);
+                break;
+            case Message.Web.GET_SEARCH_SUGGESTIONS:
+                getSuggestions(data.data);
+                break;
+            default:
+                console.log("No Web handler for event id", data.id);
         }
     };
 

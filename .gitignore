@@ -1,6 +1,10 @@
 ## Ignore Files with sensitive information
 *.pfx
 *.appxmanifest
+*.jsproj
+*.jsroj.user
+*.shproj
+*.shproj.user
 Package.StoreAssociation.xml
 service.js
 

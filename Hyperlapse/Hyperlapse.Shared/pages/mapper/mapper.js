@@ -24,6 +24,25 @@
             
             $("#localcontenthost").addClass("onmapper");
             HL.$appbar[0].winControl.show();
+
+            /**
+            set up search
+            */
+            var searchbox = $("#mappersearch")[0];
+
+            searchbox.addEventListener("querysubmitted", function (e) {
+
+                HL.sendMessage(Message.Web.SEARCH_MAP, {
+                    query: e.detail.queryText
+                });
+            });
+
+            searchbox.addEventListener("suggestionsrequested", function(e) {
+
+                HL.sendMessage(Message.Web.GET_SEARCH_SUGGESTIONS, {
+                    query: e.detail.queryText
+                });
+            });
         },
 
         unload: function () {

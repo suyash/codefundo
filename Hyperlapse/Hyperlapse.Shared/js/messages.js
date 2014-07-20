@@ -6,7 +6,9 @@
 
     Message.Web = {
         
-        SHOW_MAP: 1
+        SHOW_MAP: 1,
+        SEARCH_MAP: 6,
+        GET_SEARCH_SUGGESTIONS: 7
     };
 
     Message.Local = {
