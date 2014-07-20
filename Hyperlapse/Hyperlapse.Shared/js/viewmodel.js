@@ -42,6 +42,11 @@
     };
 
     /**
+    top presets from azure
+    */
+    HL.topPresets = null;
+
+    /**
     Number of background images, one is loaded randomly on startup
     */
     HL.desktop.backImageCount = 5;
@@ -296,17 +301,20 @@
 
                 return HL.desktop.setup();
             }
-        }).then(function() {
+        }).then(function () {
 
-            return HL.checkSigninStatus();
-        }).then(function() {
             
+        }).then(function () {
+
             /**
             set webview
             */
             webview = $(".webview")[0];
             webview.navigate("ms-appx-web:///Web/html/main.html");
             webview.addEventListener("MSWebViewScriptNotify", HL.receiveMessage);
+        }).then(function () {
+
+            return HL.checkSigninStatus();
         });
     };
 

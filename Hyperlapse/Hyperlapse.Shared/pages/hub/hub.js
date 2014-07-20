@@ -9,7 +9,25 @@
 
         processed: function (element) {
 
-            return WinJS.Resources.processAll(element);
+            /**
+            get top presets from azure
+            */
+            var presets = hyperlapseClient.getTable("presets");
+
+            return presets.take(5).read().then(function (results) {
+
+                HL.topPresets = new WinJS.Binding.List(results);
+
+                var list = $(".previewlist > div")[0];
+
+                list.winControl.itemDataSource = HL.topPresets.dataSource;
+            }, function (error) {
+
+                console.log("Cannot get top presets", err);
+            }).then(function() {
+                
+                return WinJS.Resources.processAll(element);
+            });
         },
 
         ready: function (element, options) {
