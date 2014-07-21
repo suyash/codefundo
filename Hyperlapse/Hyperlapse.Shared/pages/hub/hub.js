@@ -5,50 +5,80 @@
     var session = WinJS.Application.sessionState;
     var util = WinJS.Utilities;
 
+    var previewlist = null,
+        locationlist = null;
+
     WinJS.UI.Pages.define("/pages/hub/hub.html", {
 
         processed: function (element) {
 
-            /**
-            get top presets from azure
-            */
-            var presets = hyperlapseClient.getTable("presets");
-            var previewlist =  $(".previewlist > div")[0];
+            previewlist = $(".previewsection .previewlist > div")[0];
+            locationlist = $(".mappersection .previewlist > div")[0];
 
-            return presets.take(5).read().then(function (results) {
+            if (!HL.topPresets.length || !HL.topLocations.length) {
 
-                HL.topPresets = new WinJS.Binding.List(results);
+                var presets = hyperlapseClient.getTable("presets"),
+                    locations = hyperlapseClient.getTable("locations");
 
-                previewlist.winControl.itemDataSource = HL.topPresets.dataSource;
+                var presetsPromise = presets.take(5).read().then(function(results) {
 
-                previewlist.addEventListener("iteminvoked", function(e) {
+                    //HL.topPresets.push(results);
+                    for (var i = 0; i < results.length; i++) {
 
-                    var index = e.detail.itemIndex;
+                        HL.topPresets.push(results[i]);
+                    }
 
-                    WinJS.Navigation.navigate("/pages/loader/loader.html", HL.topPresets.getAt(index));
+                    previewlist.addEventListener("iteminvoked", function(e) {
+
+                        var index = e.detail.itemIndex;
+
+                        WinJS.Navigation.navigate("/pages/loader/loader.html", HL.topPresets.getAt(index));
+                    });
+                }, function(error) {
+
+                    console.log("Cannot get top presets", error);
                 });
-            }, function (error) {
 
-                console.log("Cannot get top presets", error);
-            }).then(function() {
-                
+                var locationsPromise = locations.take(5).read().then(function (results) {
+
+                    //HL.topLocations.push(results);
+
+                    for (var i = 0; i < results.length; i++) {
+
+                        HL.topLocations.push(results[i]);
+                    }
+
+                    locationlist.addEventListener("iteminvoked", function(e) {
+
+                        var index = e.detail.itemIndex;
+
+                        WinJS.Navigation.navigate("/pages/mapper/mapper.html", HL.topLocations.getAt(index));
+                    });
+                }, function(error) {
+
+                    console.log("Cannot get top presets", error);
+                });
+
+                return WinJS.Promise.join([presetsPromise, locationsPromise]).then(function() {
+
+                    return WinJS.Resources.processAll(element);
+                });
+            } else {
+
                 return WinJS.Resources.processAll(element);
-            });
+            }
         },
 
         ready: function (element, options) {
-
-            var hub = element.querySelector(".hub").winControl;
 
             if (!HL.isPhone) {
 
                 var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
 
                 $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
-            } else {
-
-                $("#appbar").removeClass("hidden");
             }
+
+            var hub = element.querySelector(".hub").winControl;
 
             hub.onheaderinvoked = function (args) {
 
@@ -60,6 +90,42 @@
                 if (args.srcElement === hub.element && args.detail.loadingState === "complete") {
 
                     hub.onloadingstatechanged = null;
+
+                    if (!HL.isPhone) {
+
+                        previewlist.winControl.onloadingstatechanged = function (args) {
+
+                            if (previewlist.winControl.loadingState === "complete") {
+
+                                $(".section1previewitem").listen("mouseenter", function (e) {
+
+                                    var index = previewlist.winControl.indexOfElement(e.target);
+
+                                    var data = HL.topPresets.getAt(index);
+
+                                    $(".previewsection .previewimage").setStyle("background-image", "url(\"" + data.previewimageurl + "\")");
+                                });
+                            }
+                        }
+
+                        locationlist.winControl.onloadingstatechanged = function (args) {
+
+                            if (locationlist.winControl.loadingState === "complete") {
+
+                                $(".section2previewitem").listen("mouseenter", function (e) {
+
+                                    var index = previewlist.winControl.indexOfElement(e.target);
+
+                                    var data = HL.topLocations.getAt(index);
+
+                                    //$(".previewsection .previewimage").setStyle("background-image", "url(\"" + data.previewimageurl + "\")");
+                                });
+                            }
+                        }
+                    } else {
+
+                        $("#appbar").removeClass("hidden");
+                    }
                 }
             }
         },

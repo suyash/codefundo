@@ -25,9 +25,9 @@
                             data-win-control="WinJS.UI.PivotItem"
                             data-win-options="{isHeaderStatic:true}"
                             data-win-res="{ winControl: {'header': 'Section1Mobile'} }">
-                        <div class="pivotsection section1pivotsection">
+                        <div class="pivotsection previewsection">
                             <div id="section1pivottemplate" data-win-control="WinJS.Binding.Template">
-                                <div class="previewitem section1previewitem">
+                                <div class="previewitem previewsection">
                                     <div data-win-bind="innerHTML: title"></div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                 <div data-win-control="WinJS.UI.ListView"
                                         data-win-options="{
                                     itemTemplate: select('#section1pivottemplate'),
-                                    itemDataSource: HL.sampleList.dataSource,
+                                    itemDataSource: HL.topPresets.dataSource,
                                     layout: { type: WinJS.UI.ListLayout }
                                 }"></div>
                             </div>
@@ -51,10 +51,10 @@
                             data-win-control="WinJS.UI.PivotItem"
                             data-win-options="{isHeaderStatic:true}"
                             data-win-res="{ winControl: {'header': 'Section2Mobile'} }">
-                        <div class="pivotsection section1pivotsection">
+                        <div class="pivotsection mappersection">
                             <div id="section2pivottemplate" data-win-control="WinJS.Binding.Template">
                                 <div class="previewitem section1previewitem">
-                                    <div data-win-bind="innerHTML: id"></div>
+                                    <div data-win-bind="innerHTML: query"></div>
                                 </div>
                             </div>
                             <div class="previewtitle">
@@ -63,9 +63,9 @@
                             <div class="previewlist">
                                 <div data-win-control="WinJS.UI.ListView"
                                         data-win-options="{ itemTemplate: select('#section2pivottemplate'),
-                                itemDataSource: HL.sampleList.dataSource,
-                                layout: { type: WinJS.UI.ListLayout }
-                            }"></div>
+                                            itemDataSource: HL.topLocations.dataSource,
+                                            layout: { type: WinJS.UI.ListLayout }
+                                        }"></div>
                             </div>
                             <div class="fullpreview">
                                 <button data-win-res="{ innerHTML: 'Section2SeeAll' }"></button>

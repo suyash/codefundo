@@ -13,9 +13,12 @@
 
         ready: function (element, options) {
 
-            var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
+            if (!HL.isPhone) {
 
-            $(".profile").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
+                var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
+
+                $(".profile").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
+            }
         },
 
         unload: function () {

@@ -49,7 +49,12 @@
     /**
     top presets from azure
     */
-    HL.topPresets = null;
+    HL.topPresets = new WinJS.Binding.List();
+
+    /**
+    top locations from azure
+    */
+    HL.topLocations = new WinJS.Binding.List();
 
     /**
     Number of background images, one is loaded randomly on startup

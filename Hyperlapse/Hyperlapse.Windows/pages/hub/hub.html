@@ -56,6 +56,7 @@
                                 <div data-win-control="WinJS.UI.ListView"
                                      data-win-options="{
                                         itemTemplate: select('#section1previewtemplate'),
+                                        itemDataSource: HL.topPresets.dataSource,
                                         layout: { type: WinJS.UI.ListLayout }
                                      }"></div>
                             </div>
@@ -71,7 +72,7 @@
                         <div id="section2previewtemplate"
                              data-win-control="WinJS.Binding.Template">
                             <div class="previewitem section2previewitem">
-                                <div data-win-bind="innerHTML: id"></div>
+                                <div data-win-bind="innerHTML: query"></div>
                             </div>
                         </div>
                         <div class="preview">
@@ -85,7 +86,7 @@
                                 <div data-win-control="WinJS.UI.ListView"
                                      data-win-options="{
                                         itemTemplate: select('#section2previewtemplate'),
-                                        itemDataSource: HL.sampleList.dataSource,
+                                        itemDataSource: HL.topLocations.dataSource,
                                         layout: { type: WinJS.UI.ListLayout }
                                      }"></div>
                             </div>
