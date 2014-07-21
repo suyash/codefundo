@@ -34,8 +34,8 @@
 .profile-data {
 
     display: -ms-grid;
-    -ms-grid-rows: 100px 1fr;
-    -ms-grid-columns: 100px 500px;
+    -ms-grid-rows: 200px 1fr;
+    -ms-grid-columns: 200px 500px;
 }
 
 .profile-pic {
@@ -52,6 +52,6 @@
 .profile-name {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
-    margin-top: 25px;
+    margin-top: 115px;
     margin-left: 40px;
 }

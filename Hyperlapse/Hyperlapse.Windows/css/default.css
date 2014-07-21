@@ -47,7 +47,7 @@
     	display: -ms-grid;
 		border: 2px solid transparent;
         transition: all ease-in-out 0.2s;
-        -ms-grid-columns: 80px 1fr;
+        -ms-grid-columns: 1fr 80px;
         -ms-grid-rows: 1fr;
     }
 
@@ -62,7 +62,7 @@
     }
 
     .signimageholder {
-    	-ms-grid-column: 1;
+    	-ms-grid-column: 2;
     	-ms-grid-row: 1;
 		float: left;
 		width: 80px;
@@ -78,7 +78,7 @@
 		font-size: 1.7em;
 		margin: 0;
 		padding-right: 10px;
-		-ms-grid-column: 2;
+		-ms-grid-column: 1;
 		-ms-grid-row: 1;
     }
 

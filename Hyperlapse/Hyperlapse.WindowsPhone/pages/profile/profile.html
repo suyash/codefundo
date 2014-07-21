@@ -11,13 +11,18 @@
     <div class="profile fragment">
         <header class="page-header" aria-label="Header content" role="banner">
             <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
-            <h1 class="titlearea win-type-ellipsis">
-                <span class="pagetitle">Welcome to profile</span>
-            </h1>
             <div class="signstatus"></div>
         </header>
         <section class="page-section" aria-label="Main content" role="main">
-            <p>Content goes here.</p>
+            <div class="profile-data">
+                <div class="profile-pic">
+                    <img data-win-bind="src: img" alt="profile pic" />
+                </div>
+                <h1 class="profile-name">
+                    <span class="profile-firstname" data-win-bind="innerHTML: firstname"></span>
+                    <span class="profile-lastname" data-win-bind="innerHTML: lastname"></span>
+                </h1>
+            </div>
         </section>
     </div>
 </body>

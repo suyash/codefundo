@@ -318,6 +318,9 @@
         });
     };
 
+    /**
+    get suggestions for a query from places api
+    */
     var getSuggestions = function(data) {};
 
     window.sendMessage = function (id, data) {
