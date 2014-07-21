@@ -40,9 +40,15 @@
 
             var hub = element.querySelector(".hub").winControl;
 
-            var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
+            if (!HL.isPhone) {
 
-            $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
+                var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
+
+                $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
+            } else {
+
+                $("#appbar").removeClass("hidden");
+            }
 
             hub.onheaderinvoked = function (args) {
 
@@ -55,11 +61,6 @@
 
                     hub.onloadingstatechanged = null;
                 }
-            }
-
-            if (HL.isPhone) {
-
-                $("#appbar").removeClass("hidden");
             }
         },
 

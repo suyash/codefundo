@@ -99,8 +99,8 @@
             flyout = $(".loggedinflyout")[0];
             setFlyout(flyout, root);
         } else {
-            $("#appbar")[0][0].winControl.hideCommands([loginHeader, loginMS, loginTwitter, loginGoogle, loginFacebook]);
-            $("#appbar")[0][0].winControl.showCommands([accountUser, logoutUser]);
+            $("#appbar")[0].winControl.hideCommands([loginHeader, loginMS, loginTwitter, loginGoogle, loginFacebook]);
+            $("#appbar")[0].winControl.showCommands([accountUser, logoutUser]);
         }
 
         WinJS.Utilities.empty(root);

@@ -9,7 +9,7 @@
 
 .fragment header[role=banner] {
 	/* Define a grid with columns for the back button and page title. */
-	-ms-grid-columns: 1fr 110px;
+	-ms-grid-columns: 1fr 130px;
 	-ms-grid-rows: 1fr;
 	display: -ms-grid;
 	height: 40px;
@@ -36,5 +36,5 @@
 		}
 
 #appbar {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.6);
 }

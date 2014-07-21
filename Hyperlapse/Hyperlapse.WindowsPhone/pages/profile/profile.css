@@ -30,28 +30,3 @@
 		-ms-grid-row: 2;
 		height: 100%;
 	}
-
-.profile-data {
-
-    display: -ms-grid;
-    -ms-grid-rows: 100px 1fr;
-    -ms-grid-columns: 100px 500px;
-}
-
-.profile-pic {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    border: 2px solid white;
-    overflow: hidden;
-}
-
-.profile-pic img {
-    width: 100%;
-}
-
-.profile-name {
-    -ms-grid-row: 1;
-    -ms-grid-column: 2;
-    margin-top: 25px;
-    margin-left: 40px;
-}

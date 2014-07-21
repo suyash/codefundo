@@ -132,6 +132,7 @@
 		-ms-grid-column: 2;
 		-ms-grid-row: 1;
 		padding-right: 10px;
+		width: 100%;
 	}
 
 	.sign {
@@ -139,7 +140,11 @@
 		text-align: right;
 		text-decoration: none;
 		font-size: 1.2em;
-		border-width: 0px;
+		border-width: 0;
+		width: 100%;
+		display: -ms-grid;
+		-ms-grid-rows: 1fr;
+		-ms-grid-columns: 1.5fr 1fr;
 	}
 	
 	.sign:hover {
@@ -148,6 +153,32 @@
 
 	.sign.pressed {
 		transform: scale(0.9);
+	}
+
+	.signtextholder {
+		-ms-grid-column: 1;
+		-ms-grid-row: 1;
+		margin-right: 5px;
+	}
+
+	.signedout .signtextholder {
+		-ms-grid-column-span: 2;
+	}
+
+	.signedin .signtextholder {
+	    margin-top: 5px;
+	}
+
+	.signimageholder {
+		-ms-grid-column: 2;
+		-ms-grid-row: 1;
+	    height: 100%;
+	    width: 100%;
+	    overflow: hidden;
+	}
+
+	.signimageholder img {
+		width: 100%;
 	}
 		
 .label-extralarge {
