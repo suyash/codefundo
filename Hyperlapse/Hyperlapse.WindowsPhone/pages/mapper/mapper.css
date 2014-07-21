@@ -1,0 +1,37 @@
+﻿.mapper section {
+	margin: auto 120px;
+}
+
+.phone .mapper .page-section {
+	margin: auto 24px;
+}
+
+.phone .mapper .page-header .titlearea {
+	-ms-grid-column: 1;
+	margin-top: 37px;
+	margin-left: 24px;
+	font-size: 28pt;
+	width: calc(100vw - 20px);
+}
+
+.phone .mapper .back-button {
+	display: none;
+}
+
+.mapper.fragment {
+	-ms-grid-columns: 1fr;
+	-ms-grid-rows: 128px 1fr;
+	display: -ms-grid;
+	height: 100%;
+	width: 100%;
+}
+
+	.mapper.fragment section[role=main] {
+		-ms-grid-row: 2;
+		height: 100%;
+	}
+
+	.contenthostblock.onmapper {
+		height: 70px;
+		background-color: rgba(0, 0, 0, 0.2);
+	}

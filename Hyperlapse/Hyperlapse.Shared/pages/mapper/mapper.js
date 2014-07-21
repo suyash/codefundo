@@ -20,12 +20,22 @@
             HL.$appbar.query(".mappercommand").removeClass("hidden");
 
             $(".webview").removeClass("invisible");
+
+            if (HL.isPhone) {
+
+                HL.$appbar[0].winControl.showCommands("launchHL");
+                $("#herohost").addClass("hidden");
+            }
         },
 
         ready: function (element, options) {
             
             $("#localcontenthost").addClass("onmapper");
-            HL.$appbar[0].winControl.show();
+
+            if (!HL.isPhone) {
+
+                HL.$appbar[0].winControl.show();
+            }
 
             /**
             set up search
@@ -53,6 +63,12 @@
             HL.$appbar.addClass("hidden");
 
             $(".webview").removeClass("invisible");
+
+            if (HL.isPhone) {
+
+                HL.$appbar[0].winControl.hideCommands("launchHL");
+                $("#herohost").removeClass("hidden");
+            }
         },
 
         updateLayout: function (element) {

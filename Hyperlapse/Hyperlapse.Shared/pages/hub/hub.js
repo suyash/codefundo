@@ -91,6 +91,14 @@
                 var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
 
                 $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
+            } else {
+
+                $("#appbar").removeClass("hidden");
+
+                $("#gotomapper").listen("click", function () {
+
+                    nav.navigate("/pages/mapper/mapper.html");
+                });
             }
 
             var hub = element.querySelector(".hub").winControl;
@@ -194,9 +202,6 @@
                                 }
                             }
                         }
-                    } else {
-
-                        $("#appbar").removeClass("hidden");
                     }
                 }
             }

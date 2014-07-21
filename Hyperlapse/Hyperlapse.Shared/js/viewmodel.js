@@ -104,8 +104,8 @@
             flyout = $(".loggedinflyout")[0];
             setFlyout(flyout, root);
         } else {
-            $("#appbar")[0].winControl.hideCommands([loginHeader, loginMS, loginTwitter, loginGoogle, loginFacebook]);
-            $("#appbar")[0].winControl.showCommands([accountUser, logoutUser]);
+            $("#appbar")[0].winControl.hideCommands(["loginHeader", "loginMS", "loginTwitter", "loginGoogle", "loginFacebook"]);
+            $("#appbar")[0].winControl.showCommands(["accountUser", "logoutUser"]);
         }
 
         WinJS.Utilities.empty(root);
@@ -161,8 +161,8 @@
             flyout = $(".loginflyout")[0];
             setFlyout(flyout, root);
         } else {
-            $("#appbar")[0].winControl.showCommands([loginHeader, loginMS, loginTwitter, loginGoogle, loginFacebook]);
-            $("#appbar")[0].winControl.hideCommands([accountUser, logoutUser]);
+            $("#appbar")[0].winControl.showCommands(["loginHeader", "loginMS", "loginTwitter", "loginGoogle", "loginFacebook"]);
+            $("#appbar")[0].winControl.hideCommands(["accountUser", "logoutUser"]);
         }
 
         WinJS.Utilities.empty(root);
@@ -358,7 +358,7 @@
     */
     HL.phone.setup = function() {
 
-        Windows.UI.ViewManagement.ApplicationView.getForCurrentView().setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useCoreWindow);
+        //Windows.UI.ViewManagement.ApplicationView.getForCurrentView().setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useCoreWindow);
     };
 
     /**
@@ -448,6 +448,14 @@
     };
 
     /**
+    get current user
+    */
+    HL.getCurrentUser = function () {
+
+        return userData;
+    };
+
+    /**
     send a message
     */
     HL.sendMessage = function (id, data) {
@@ -484,34 +492,4 @@
             }
         }
     };
-
-    /**
-    get current user
-    */
-    HL.getCurrentUser = function() {
-
-        return userData;
-    }
-
-    /**
-    Random shit to delete in production
-    */
-    HL.sampleList = new WinJS.Binding.List([
-        {
-            id: "1"
-        },
-        {
-            id: 2
-        },
-        {
-            id: 3
-        },
-        {
-            id: 4
-        },
-        {
-            id: 5
-        }
-    ]);
-
 })();

@@ -42,7 +42,7 @@
             </div>
             <div id="localcontenthost"
                  class="contenthostblock">
-                <div class="contenthostblock">
+                <div id="herohost" class="contenthostblock">
                     <section class="heroimages">
                         <div id="heroimage1" class="heroimage"></div>
                         <div id="heroimage2" class="heroimage"></div>
@@ -145,6 +145,17 @@
                 data-win-res="{
                     winControl: {
                         label: 'SignedinLogout'
+                    }
+                }"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                    id: 'launchHL',
+                    icon: 'right',
+                    hidden: true
+                }"
+                data-win-res="{
+                    winControl: {
+                        label: 'LaunchHL'
                     }
                 }"></button>
     </div>
