@@ -417,7 +417,6 @@
                 if (!HL.playing) {
 
                     HL.sendMessage(Message.Web.PLAY_HYPERLAPSE);
-                    console.log(WinJS.Resources.getString("PauseHL"));
                     playcommand[0].winControl.icon = "pause";
                     playcommand[0].winControl.label = WinJS.Resources.getString("PauseHL").value;
                 } else {
@@ -441,7 +440,7 @@
                     lookatlong: l.lookat[1],
                     title: "Custom Hyperlapse",
                     id: Date.now().toString(),
-                    previewimageurl: "https://ecce1d291b455d4931046de056c9e7583c9c96ff.googledrive.com/host/0B3gomzciSBpOYThjNC1iTXJNY00/1.jpg"
+                    previewimageurl: "https://ecce1d291b455d4931046de056c9e7583c9c96ff.googledrive.com/host/0B3gomzciSBpOYThjNC1iTXJNY00/3.png"
                 };
 
                 nav.navigate("/pages/loader/loader.html", ob);
@@ -472,7 +471,7 @@
     */
     HL.phone.setup = function() {
 
-        //Windows.UI.ViewManagement.ApplicationView.getForCurrentView().setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useCoreWindow);
+        Windows.UI.ViewManagement.ApplicationView.getForCurrentView().setDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.useCoreWindow);
     };
 
     /**

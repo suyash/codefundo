@@ -123,9 +123,10 @@
 }
 
 .phone .loaderdata {
-	-ms-grid-rows: 4fr 1fr;
+	-ms-grid-rows: 5fr 1fr;
 	-ms-grid-columns: 1fr;
-	height: calc(100% - 20px);
+	height: calc(100%);
+	margin-top: -20px;
 }
 
 .phone .info {

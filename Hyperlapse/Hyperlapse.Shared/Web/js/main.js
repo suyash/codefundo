@@ -30,7 +30,10 @@
             routeIndex: 0,
             suppressInfoWindows: true
         }),
-        panoramiolayer = new maps.panoramio.PanoramioLayer(),
+        panoramiolayer = new maps.panoramio.PanoramioLayer({
+            clickable: false,
+            suppressInfoWindows: true
+        }),
         geocoder = new maps.Geocoder();
 
     /**
@@ -371,6 +374,8 @@
 
             sendMessage(Message.Local.HYPERLAPSE_LOADED);
         });
+
+        hyp.onFrame(function() {});
     };
 
     /**
