@@ -288,8 +288,8 @@
             bounds.extend(endloc);
 
             setMarker(markers.start, startloc);
-            setMarker(markers.start, endloc);
-            setMarker(markers.start, lookatloc);
+            setMarker(markers.end, endloc);
+            setMarker(markers.lookat, lookatloc);
         } else {
             if (data.center) {
 

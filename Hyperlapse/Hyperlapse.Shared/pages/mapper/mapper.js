@@ -5,12 +5,22 @@
 
         init: function(element, options) {
 
-            var o = HL.markerLocations;
+            var o = null;
 
-            if (o.start[0] === o.end[0] && o.start[1] === o.end[1]) {
+            if (options) {
 
                 o = {
-                    center: HL.markerLocations.start
+                    center: [options.centerlat, options.centerlong]
+                };
+            } else {
+
+                o = HL.markerLocations;
+
+                if (o.start[0] === o.end[0] && o.start[1] === o.end[1]) {
+
+                    o = {
+                        center: HL.markerLocations.start
+                    }
                 }
             }
 
