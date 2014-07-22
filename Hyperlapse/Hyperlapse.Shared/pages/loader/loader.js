@@ -3,14 +3,40 @@
 
     WinJS.UI.Pages.define("/pages/loader/loader.html", {
 
-        init: function(element, options) {
+        init: function (element, options) {
 
-            if (!HL.currentlyLoading) {
+            var getImageUrl = function (startlat, startlong, endlat, endlong, lookatlat, lookatlong) {
+
+                return [
+                    "http://maps.googleapis.com/maps/api/staticmap?",
+                    "zoom=",
+                    13,
+                    "&size=",
+                    640,
+                    "x",
+                    640,
+                    "&format=jpg&markers=color:green%7Clabel:L%7C",
+                    lookatlat,
+                    ",",
+                    lookatlong,
+                    "&markers=color:red%7Clabel:S%7C",
+                    startlat,
+                    ",",
+                    startlong,
+                    "&markers=color:blue%7Clabel:E%7C",
+                    endlat,
+                    ",",
+                    endlong
+                ].join("");
+            };
+
+            if (!HL.currentlyLoading && !HL.loaded) {
 
                 var ob = {
                     options: options,
                     progress: "0%",
-                    currentSection: 0
+                    currentSection: 0,
+                    mapimage: getImageUrl(options.startlat, options.startlong, options.endlat, options.endlong, options.lookatlat, options.lookatlong)
                 };
                 HL.hyperlapseData = WinJS.Binding.as(ob);
             }
@@ -34,10 +60,8 @@
             });
         },
 
-        unload: function () {
-        },
+        unload: function () {},
 
-        updateLayout: function (element) {
-        }
+        updateLayout: function (element) {}
     });
 })();

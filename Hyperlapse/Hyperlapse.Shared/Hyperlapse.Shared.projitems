@@ -30,6 +30,8 @@
     <Content Include="$(MSBuildThisFileDirectory)pages\loader\loader.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\mapper\mapper.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\mapper\mapper.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\player\player.css" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\player\player.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\presets\presets.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\presets\presets.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\profile\profile.css" />

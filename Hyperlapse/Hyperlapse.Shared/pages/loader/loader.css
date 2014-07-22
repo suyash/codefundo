@@ -1,6 +1,4 @@
-﻿
-
-.phone .loader .page-section {
+﻿.phone .loader .page-section {
 	margin: auto 24px;
 }
 
@@ -28,6 +26,7 @@
 .loader.fragment section[role=main] {
 	-ms-grid-row: 2;
 	height: 100%;
+	margin-top: 20px;
 }
 
 .loaderdata {
@@ -77,7 +76,12 @@
 .loaderdata .pic {
 	-ms-grid-column: 4;
 	-ms-grid-row: 1;
+}
+
+.loaderdata .pic img {
+	height: 100%;
 	border: 1px solid white;
+	float: right;
 }
 
 .loaderdata .loaddata {
@@ -103,7 +107,7 @@
 }
 
 .loaderdata .buttonscontainer {
-	transition: all ease-in-out 0.2s;
+	transition: all ease-in-out 0.5s;
 }
 
 .loaderdata .buttoncontainer {
