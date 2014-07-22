@@ -43,17 +43,19 @@
                     </div>
                 </div>
                 <div class="loaddata">
-                    <div class="loadbuttoncontainer buttoncontainer">
-                        <button class="loadbutton" data-win-res="{ innerHTML: 'LoadButtonContent' }"></button>
-                    </div>
-                    <div class="progressdata buttoncontainer hidden">
-                        <div class="progressbar" data-win-bind="style.width: progress"></div>
-                        <div class="progresspercentage">
-                            <span data-win-bind="innerHTML: progress"></span>
+                    <div class="buttonscontainer" data-win-bind="style.transform: currentSection HL.getCurrentSectionLoader">
+                        <div class="loadbuttoncontainer buttoncontainer">
+                            <button class="loadbutton" data-win-res="{ innerHTML: 'LoadButtonContent' }"></button>
                         </div>
-                    </div>
-                    <div class="playbuttoncontainer buttoncontainer hidden">
-                        <button class="playbutton" data-win-res="{ innerHTML: 'PlayButtonContent' }"></button>
+                        <div class="progressdata buttoncontainer">
+                            <div class="progressbar" data-win-bind="style.width: progress"></div>
+                            <div class="progresspercentage">
+                                <span data-win-bind="innerHTML: progress"></span>
+                            </div>
+                        </div>
+                        <div class="playbuttoncontainer buttoncontainer">
+                            <button class="playbutton" data-win-res="{ innerHTML: 'PlayButtonContent' }"></button>
+                        </div>
                     </div>
                 </div>
             </div>

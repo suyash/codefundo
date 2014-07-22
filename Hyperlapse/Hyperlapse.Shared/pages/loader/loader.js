@@ -9,7 +9,8 @@
 
                 var ob = {
                     options: options,
-                    progress: "0%"
+                    progress: "0%",
+                    currentSection: 0
                 };
                 HL.hyperlapseData = WinJS.Binding.as(ob);
             }
@@ -27,11 +28,9 @@
 
             $(".loadbutton").listen("click", function() {
 
-                $(".loadbuttoncontainer").addClass("hidden");
+                HL.hyperlapseData.currentSection = 1;
 
-                $(".progressdata").removeClass("hidden");
-
-                HL.sendMessage(Message.Web.LOAD_HYPERLAPSE, HL.hyperlapseData);
+                HL.sendMessage(Message.Web.LOAD_HYPERLAPSE, HL.hyperlapseData.options);
             });
         },
 

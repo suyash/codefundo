@@ -339,11 +339,17 @@
 
         hyp = hyperlapse(document.querySelector("#hyperlapse"), {
             
-            onProgress: function(value) {
-
-                sendMessage(Message.Local.HYPERLAPSE_PROGRESS, value);
-            },
             explore: true
+        });
+
+        hyp.onProgress(function(value) {
+
+            sendMessage(Message.Local.HYPERLAPSE_PROGRESS, value);
+        });
+
+        hyp.onLoad(function() {
+
+            sendMessage(Message.Local.HYPERLAPSE_LOADED);
         });
     };
 

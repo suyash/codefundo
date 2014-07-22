@@ -86,6 +86,7 @@
 	display: -ms-grid;
 	-ms-grid-rows: 1fr;
 	-ms-grid-columns: 1fr;
+    overflow: hidden;
 }
 
 .loaderdata .progressdata {
@@ -101,9 +102,14 @@
 	margin-bottom: 10px;
 }
 
+.loaderdata .buttonscontainer {
+	transition: all ease-in-out 0.2s;
+}
+
 .loaderdata .buttoncontainer {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	justify-content: center;
+	height: 100%;
 }

@@ -525,12 +525,29 @@
     };
 
     /**
+    get section for loader
+    */
+    HL.getCurrentSectionLoader = WinJS.Binding.converter(function(val) {
+
+        return "translateY(-" + (val * 100) + "%)";
+    });
+
+    /**
     handles hyperlapse load progress
     */
     HL.hyperlapseProgress = function(value) {
 
         HL.hyperlapseData.progress = value.toFixed(2) + "%";
         console.log(HL.hyperlapseData.progress);
+    };
+
+    /**
+    handles hyperlapse load complete
+    */
+    HL.hyperlapseLoaded = function() {
+
+        HL.loaded = true;
+        HL.hyperlapseData.currentSection = 2;
     };
 
     /**
@@ -567,6 +584,9 @@
                     break;
                 case Message.Local.HYPERLAPSE_PROGRESS:
                     HL.hyperlapseProgress(data.data);
+                    break;
+                case Message.Local.HYPERLAPSE_LOADED:
+                    HL.hyperlapseLoaded();
                     break;
                 default:
                     console.log("No local handler for event with id", data.id);

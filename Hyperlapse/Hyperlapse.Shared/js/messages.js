@@ -18,6 +18,7 @@
         START_CHANGED: 3,
         END_CHANGED: 4,
         LOOKAT_CHANGED: 5,
-        HYPERLAPSE_PROGRESS: 10
+        HYPERLAPSE_PROGRESS: 10,
+        HYPERLAPSE_LOADED: 11
     };
 })();
