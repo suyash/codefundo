@@ -1,0 +1,151 @@
+﻿.presets section {
+	margin: auto 120px;
+}
+
+.presets .page-section {
+	margin: 0px;
+}
+
+.phone .presets .page-section {
+	margin: auto 24px;
+}
+
+.phone .presets .page-header .titlearea {
+	-ms-grid-column: 1;
+	margin-top: 37px;
+	margin-left: 24px;
+	font-size: 28pt;
+	width: calc(100vw - 20px);
+}
+
+.phone .presets .back-button {
+	display: none;
+}
+
+.presets.fragment {
+	-ms-grid-columns: 1fr;
+	-ms-grid-rows: 128px 1fr;
+	display: -ms-grid;
+	height: 100%;
+	width: 100%;
+}
+
+	.presets.fragment section[role=main] {
+		-ms-grid-row: 2;
+		height: 100%;
+	}
+
+	.presetsection {
+		height: calc(100% - 20px);
+		position: relative;
+		margin-top: 20px;
+	}
+
+	.presetcontainer {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+	}
+
+	.loadingcontainer {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.loading {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 60px;
+	}
+
+	.loading progress {
+		color: white;
+	}
+
+	.progresstext {
+		display: block;
+		padding-top: 40px;
+		font-size: 2em;
+	}
+
+	.sz {
+		height: 100%;
+	}
+
+	.phone .sz {
+		margin-top: -30px;
+	}
+
+	.presetslist {
+		height: 100%;
+	}
+
+	.presets .win-itembox {
+		background-color: transparent;
+		width: 300px;
+	}
+
+	.presetslistitem {
+		text-align: center;
+		padding: 45px 20px 40px;
+		background-color: rgba(255, 255, 255, 0.2);
+		height: 25px;
+		transition: all ease-in-out 0.4s;
+	}
+
+	.presetslistitem:hover {
+		background-color: rgba(255, 255, 255, 0.6);
+	}
+
+	.presetszoomedoutlist .win-itembox {
+		width: 160px;
+	}
+
+	.phone .presetszoomedoutlist .win-itembox {
+		width: 80px;
+	}
+
+	.presetszoomedoutlistitem {
+		background-color: rgba(255, 255, 255, 0.4);
+		height: 160px;
+		text-align: center;
+		font-size: 5em;
+	}
+
+	.phone .presetszoomedoutlistitem {
+		height: 80px;
+		font-size: 2em;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+
+	.presetszoomedoutlistitem div {
+		padding-top: 25px;
+	}
+
+	.phone .presetszoomedoutlistitem div {
+		padding-top: 20px;
+	}
+
+	.presetsgroupheaderitem {
+		font-size: 2em;
+		padding-left: 10px;
+	}
+
+	.phone .presetsgroupheaderitem {
+		padding-left: 10px;
+		padding-bottom: 10px;
+		font-size: 1em;
+		border-bottom: 1px solid white;
+		margin-right: 20px;
+	}
+
+	.phone .win-semanticzoom-zoomedoutview {
+		background-color: rgba(255, 255, 255, 0.6);
+		bottom: 65px;
+	}

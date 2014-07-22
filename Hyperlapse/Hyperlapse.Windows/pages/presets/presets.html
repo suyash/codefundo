@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>presets</title>
+
+    <link href="presets.css" rel="stylesheet" />
+    <script src="presets.js"></script>
+</head>
+<body>
+    <div class="presets fragment">
+        <header class="page-header" aria-label="Header content" role="banner">
+            <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
+            <h1 class="titlearea win-type-ellipsis">
+                <span class="pagetitle" data-win-res="{ innerHTML: 'AllAvailablePresets' }"></span>
+            </h1>
+            <div class="signstatus"></div>
+        </header>
+        <section class="page-section" aria-label="Main content" role="main">
+            <div class="presetsection">
+                <div class="szcontainer presetcontainer">
+                    
+                    <div class="presetlisttemplate"
+                         data-win-control="WinJS.Binding.Template">
+                        <div class="presetslistitem">
+                            <div data-win-bind="innerHTML:title"></div>
+                        </div>
+                    </div>
+
+                    <div class="presetzoomedoutlisttemplate"
+                         data-win-control="WinJS.Binding.Template">
+                        <div class="presetszoomedoutlistitem">
+                            <div data-win-bind="innerHTML:title"></div>
+                        </div>
+                    </div>
+
+                    <div class="presetgroupheadertemplate"
+                         data-win-control="WinJS.Binding.Template">
+                        <div class="presetsgroupheaderitem">
+                            <div data-win-bind="innerHTML:title"></div>
+                        </div>
+                    </div>
+
+                    <div class="sz"
+                         data-win-control="WinJS.UI.SemanticZoom">
+
+                        <div class="presetslist"
+                             data-win-control="WinJS.UI.ListView"
+                             data-win-options="{
+                                itemTemplate: select('.presetlisttemplate'),
+                                itemDataSource: HL.allPresetsGrouped.dataSource,
+                                groupDataSource: HL.allPresetsGrouped.groups.dataSource,
+                                groupHeaderTemplate: select('.presetgroupheadertemplate')
+                            }"></div>
+
+                        <div class="presetszoomedoutlist"
+                             data-win-control="WinJS.UI.ListView"
+                             data-win-options="{
+                                itemTemplate: select('.presetzoomedoutlisttemplate'),
+                                itemDataSource: HL.allPresetsGrouped.groups.dataSource
+                            }"></div>
+                    </div>
+                </div>
+                <div class="loadingcontainer presetcontainer">
+                    <div class="loading">
+                        <progress class="win-large win-ring"></progress>
+                        <span class="progresstext" data-win-res="{ innerHTML: 'PresetLoadingText' }"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

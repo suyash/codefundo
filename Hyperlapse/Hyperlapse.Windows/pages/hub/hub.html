@@ -34,9 +34,9 @@
                     </section>
                 </div>
 
-                <div class="section1 section" 
-                     data-win-control="WinJS.UI.HubSection" 
-                     data-win-options="{ isHeaderStatic: true }" 
+                <div class="section1 section"
+                     data-win-control="WinJS.UI.HubSection"
+                     data-win-options="{ onheaderinvoked: select('.pagecontrol').winControl.onViewerInvoked }"
                      data-win-res="{ winControl: {'header': 'Section1'} }">
                     <div class="previewsection hubsection">
                         <div id="section1previewtemplate"
@@ -46,12 +46,12 @@
                             </div>
                         </div>
                         <div class="preview">
-                        	<div class="previewimage"></div>
+                            <div class="previewimage"></div>
                         </div>
                         <div class="previewitems">
-                        	<div class="previewtitle">
-                        		<span class="label-mediummid" data-win-res="{ innerHTML: 'Section1Title' }"></span>
-                        	</div>
+                            <div class="previewtitle">
+                                <span class="label-mediummid" data-win-res="{ innerHTML: 'Section1Title' }"></span>
+                            </div>
                             <div class="previewlist">
                                 <div data-win-control="WinJS.UI.ListView"
                                      data-win-options="{

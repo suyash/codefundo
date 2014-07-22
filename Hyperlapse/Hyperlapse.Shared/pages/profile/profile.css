@@ -31,26 +31,51 @@
 		height: 100%;
 	}
 
-.profile-data {
+.phone .profile-data {
     display: -ms-grid;
     -ms-grid-rows: 100px 80px 1fr;
     -ms-grid-columns: 1fr;
     text-align: center;
 }
 
-.profile-pic {
+.phone .profile-pic {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
 }
 
-.profile-pic img {
+.phone .profile-pic img {
     margin: 0 auto;
     border: 2px solid white;
     height: 100%;
 }
 
-.profile-name {
+.phone .profile-name {
     -ms-grid-row: 2;
     -ms-grid-column: 1;
     padding-top: 10px;
+}
+
+.desktop .profile-data {
+
+    display: -ms-grid;
+    -ms-grid-rows: 200px 1fr;
+    -ms-grid-columns: 200px 500px;
+}
+
+.desktop .profile-pic {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+.desktop .profile-pic img {
+    width: 100%;
+}
+
+.desktop .profile-name {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    margin-top: 115px;
+    margin-left: 40px;
 }

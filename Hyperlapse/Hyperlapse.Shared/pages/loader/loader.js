@@ -5,11 +5,10 @@
 
         init: function(element, options) {
 
-            if (!HL.currentLyLoading) {
+            if (!HL.hyperlapseData) {
 
-                HL.currentlyLoading = WinJS.Binding.as(options);
-                HL.currentlyLoading.progress = 0;
-                HL.sendMessage();
+                HL.hyperlapseData = WinJS.Binding.as(options);
+                HL.hyperlapseData.progress = 0;
             }
         },
 

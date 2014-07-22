@@ -26,11 +26,15 @@
     <Content Include="$(MSBuildThisFileDirectory)js\viewmodel.js" />
     <Content Include="$(MSBuildThisFileDirectory)pages\hub\hub.js" />
     <Content Include="$(MSBuildThisFileDirectory)images\gray.png" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\loader\loader.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\loader\loader.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\mapper\mapper.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\mapper\mapper.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\presets\presets.css" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\presets\presets.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\profile\profile.css" />
     <Content Include="$(MSBuildThisFileDirectory)pages\profile\profile.js" />
     <Content Include="$(MSBuildThisFileDirectory)Web\css\main.css" />
-    <Content Include="$(MSBuildThisFileDirectory)Web\html\main.html" />
     <Content Include="$(MSBuildThisFileDirectory)Web\js\main.js" />
     <PRIResource Include="$(MSBuildThisFileDirectory)strings\en-US\resources.resjson" />
   </ItemGroup>

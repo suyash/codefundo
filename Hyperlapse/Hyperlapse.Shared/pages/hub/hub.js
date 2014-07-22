@@ -88,9 +88,7 @@
 
             if (!HL.isPhone) {
 
-                var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
-
-                $(".hubpage").setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
+                HL.desktop.addBackgroundImage(".hubpage");
             } else {
 
                 $("#appbar").removeClass("hidden");
@@ -98,6 +96,11 @@
                 $("#gotomapper").listen("click", function () {
 
                     nav.navigate("/pages/mapper/mapper.html");
+                });
+
+                $("#gotopresets").listen("click", function () {
+
+                    nav.navigate("/pages/presets/presets.html");
                 });
             }
 
@@ -217,6 +220,14 @@
         onMapperInvoked: util.markSupportedForProcessing(function () {
 
             nav.navigate("/pages/mapper/mapper.html");
+        }),
+
+        /**
+        Called when viewer is invoked
+        */
+        onViewerInvoked: util.markSupportedForProcessing(function () {
+
+            nav.navigate("/pages/presets/presets.html");
         })
     });
 })();

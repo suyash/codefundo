@@ -23,5 +23,8 @@
 	"SignedinProfile": "Profile",
 	"SignedinLogout": "Logout",
 
-	"LaunchHL": "Launch"
+	"LaunchHL": "Launch",
+
+	"AllAvailablePresets": "Select a Preset",
+	"PresetLoadingText": "Loading Presets"
 }

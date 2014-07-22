@@ -42,9 +42,39 @@
     };
 
     /**
-    currentlyLoading, wlll store the data for currently loading hyperlapse request
+    currentlyLoading, wlll be true if currently loading hyperlapse request
     */
-    HL.currentLyLoading = null;
+    HL.currentLyLoading = false;
+
+    /**
+    will store data for curently loading/loaded hyperlapse request
+    */
+    HL.hyperlapseData = null;
+
+    /**
+    all presets from azure
+    */
+    HL.allPresets = new WinJS.Binding.List();
+
+    /**
+    all presets grouped
+    */
+    HL.allPresetsGrouped = HL.allPresets.createGrouped(
+        function _getkey(o) {
+
+            return o.title.toUpperCase().charAt(0);
+        },
+        function _groupData(o) {
+
+            return {
+                title: o.title.toUpperCase().charAt(0)
+            };
+        },
+        function _sort(k1, k2) {
+
+            return k1.charCodeAt(0) - k2.charCodeAt(0);
+        }
+    );
 
     /**
     top presets from azure
@@ -60,6 +90,16 @@
     Number of background images, one is loaded randomly on startup
     */
     HL.desktop.backImageCount = 5;
+
+    /**
+    adds a background image for desktop
+    */
+    HL.desktop.addBackgroundImage = function (s) {
+
+        var i = 1 + parseInt(HL.desktop.backImageCount * Math.random());
+
+        $(s).setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
+    };
 
     /**
     Create a flyout with a root

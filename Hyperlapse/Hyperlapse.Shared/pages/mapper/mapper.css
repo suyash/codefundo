@@ -1,17 +1,4 @@
-﻿#localcontenthost.onmapper {
-	height: 128px;
-	background-color: rgba(0, 0, 0, 0.1);
-}
-
-.mapper.fragment {
-	-ms-grid-columns: 1fr;
-	-ms-grid-rows: 128px 1fr;
-	display: -ms-grid;
-	height: 128px;
-	width: 100%;
-}
-
-.mapper section {
+﻿.mapper section {
 	margin: auto 120px;
 }
 
@@ -31,9 +18,27 @@
 	display: none;
 }
 
+.mapper.fragment {
+	-ms-grid-columns: 1fr;
+	-ms-grid-rows: 128px 1fr;
+	display: -ms-grid;
+	height: 100%;
+	width: 100%;
+}
+
 	.mapper.fragment section[role=main] {
 		-ms-grid-row: 2;
 		height: 100%;
+	}
+    
+    #localcontenthost.onmapper {
+	    height: 128px;
+	    background-color: rgba(0, 0, 0, 0.1);
+    }
+
+	.phone .contenthostblock.onmapper {
+		height: 70px;
+		background-color: rgba(0, 0, 0, 0.2);
 	}
 
 	#mappersearch {
