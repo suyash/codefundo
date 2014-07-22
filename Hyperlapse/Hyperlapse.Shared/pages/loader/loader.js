@@ -7,8 +7,11 @@
 
             if (!HL.currentlyLoading) {
 
-                HL.hyperlapseData = WinJS.Binding.as(options);
-                HL.hyperlapseData.progress = 0;
+                var ob = {
+                    options: options,
+                    progress: "0%"
+                };
+                HL.hyperlapseData = WinJS.Binding.as(ob);
             }
         },
 
@@ -21,6 +24,15 @@
         },
 
         ready: function (element, options) {
+
+            $(".loadbutton").listen("click", function() {
+
+                $(".loadbuttoncontainer").addClass("hidden");
+
+                $(".progressdata").removeClass("hidden");
+
+                HL.sendMessage(Message.Web.LOAD_HYPERLAPSE, HL.hyperlapseData);
+            });
         },
 
         unload: function () {

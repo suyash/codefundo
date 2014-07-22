@@ -525,6 +525,15 @@
     };
 
     /**
+    handles hyperlapse load progress
+    */
+    HL.hyperlapseProgress = function(value) {
+
+        HL.hyperlapseData.progress = value.toFixed(2) + "%";
+        console.log(HL.hyperlapseData.progress);
+    };
+
+    /**
     send a message
     */
     HL.sendMessage = function (id, data) {
@@ -555,6 +564,9 @@
                     break;
                 case Message.Local.LOOKAT_CHANGED:
                     HL.markerLocations.lookat = data.data;
+                    break;
+                case Message.Local.HYPERLAPSE_PROGRESS:
+                    HL.hyperlapseProgress(data.data);
                     break;
                 default:
                     console.log("No local handler for event with id", data.id);

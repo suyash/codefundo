@@ -3,6 +3,9 @@
     "use strict";
 
     var isPhone = false,
+
+        hyp = null,
+
         mapelement = null,
         map = null,
         markers = {
@@ -327,7 +330,22 @@
     /**
     get suggestions for a query from places api
     */
-    var getSuggestions = function(data) {};
+    var getSuggestions = function (data) { };
+
+    /**
+    start loading a hyperlapse
+    */
+    var loadHyperlapse = function(data) {
+
+        hyp = hyperlapse(document.querySelector("#hyperlapse"), {
+            
+            onProgress: function(value) {
+
+                sendMessage(Message.Local.HYPERLAPSE_PROGRESS, value);
+            },
+            explore: true
+        });
+    };
 
     window.sendMessage = function (id, data) {
 
@@ -355,6 +373,9 @@
                 break;
             case Message.Web.GET_SEARCH_SUGGESTIONS:
                 getSuggestions(data.data);
+                break;
+            case Message.Web.LOAD_HYPERLAPSE:
+                loadHyperlapse(data.data);
                 break;
             default:
                 console.log("No Web handler for event id", data.id);
