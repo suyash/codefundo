@@ -30,28 +30,63 @@
                 ].join("");
             };
 
-            if (!HL.currentlyLoading && !HL.loaded) {
+            /**
+            create a deepcopy of an object
+            */
+            var deepcopy = function(ob) {
 
-                var ob = {
-                    options: options,
-                    progress: "0%",
-                    currentSection: 0,
-                    mapimage: getImageUrl(options.startlat, options.startlong, options.endlat, options.endlong, options.lookatlat, options.lookatlong)
-                };
-                HL.hyperlapseData = WinJS.Binding.as(ob);
+                var o = {};
+
+                for (var x in ob) {
+
+                    o[x] = ob[x];
+                }
+
+                return o;
+            };
+
+            /**
+            If another hyperlapse is not loading and
+            another hyperlapse is not loaded or
+            another hyperlapse is loaded and is not the same as current hyperlapse
+            then create a new hyperlapse
+            */
+            if (!HL.currentlyLoading && (!HL.hyperlapseData || (options.id !== HL.hyperlapseData.options.id))){
+                
+                if (!HL.hyperlapseData) {
+
+                    var ob = {
+                        options: deepcopy(options),
+                        progress: "0%",
+                        currentSection: 0,
+                        mapimage: getImageUrl(options.startlat, options.startlong, options.endlat, options.endlong, options.lookatlat, options.lookatlong)
+                    };
+
+                    HL.hyperlapseData = WinJS.Binding.as(ob);
+                } else {
+
+                    for (var x in options) {
+
+                        HL.hyperlapseData.options[x] = options[x];
+                    }
+
+                    HL.hyperlapseData.progress = "0%";
+                    HL.hyperlapseData.currentSection = 0;
+                    HL.hyperlapseData.mapimage = getImageUrl(options.startlat, options.startlong, options.endlat, options.endlong, options.lookatlat, options.lookatlong);
+                }
+            } else {
+
+                if (HL.currentlyLoading) {
+
+                    var popup = new Windows.UI.Popups.MessageDialog("Another Hyperlapse is Loading", "Please Wait");
+                    popup.showAsync().done();
+                }
             }
         },
 
         processed: function(element) {
 
             return WinJS.Binding.processAll(element, HL.hyperlapseData).then(function() {
-                
-                if (HL.signedIn) {
-                    HL.setSignedinBox();
-                } else {
-                    HL.setSignedoutBox();
-                }
-            }).then(function() {
 
                 return WinJS.Resources.processAll();
             });
@@ -62,6 +97,8 @@
             $(".loadbutton").listen("click", function() {
 
                 HL.hyperlapseData.currentSection = 1;
+
+                HL.currentlyLoading = true;
 
                 HL.sendMessage(Message.Web.LOAD_HYPERLAPSE, HL.hyperlapseData.options);
             });

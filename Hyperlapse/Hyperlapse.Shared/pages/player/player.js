@@ -26,6 +26,11 @@
             $("#localcontenthost").removeClass("onplayer");
 
             HL.$appbar[0].winControl.hideCommands(["playhlcommand"]);
+
+            if (HL.playing) {
+
+                HL.sendMessage(Message.Web.PAUSE_HYPERLAPSE);
+            }
         },
 
         updateLayout: function (element) {}

@@ -432,13 +432,13 @@
             points[i] = response;
 
             prevPano = response.pano;
-
-            _progress((count++ + 1) * 50 / length);
           }
           else {
 
             points[i] = null;
           }
+
+          _progress((count++ + 1) * 50 / length);
 
           if(count === length) {
 

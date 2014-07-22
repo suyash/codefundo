@@ -409,7 +409,8 @@
             /**
             event handlers for appbar buttons
             */
-            var playcommand = $("#playhlcommand");
+            var playcommand = $("#playhlcommand"),
+                launchcommand = $("#launchhl");
 
             playcommand.listen("click", function () {
 
@@ -572,6 +573,7 @@
 
         HL.loaded = true;
         HL.hyperlapseData.currentSection = 2;
+        HL.currentlyLoading = false;
     };
 
     /**

@@ -353,13 +353,19 @@
 
         emptyhyp();
 
-        hyp = hyperlapse(hypelement, {
-            
+        var options = {
             explore: true,
             start: [data.startlat, data.startlong],
             end: [data.endlat, data.endlong],
             lookat: [data.lookatlat, data.lookatlong]
-        });
+        };
+
+        if (isPhone) {
+
+            options.quality = 1;
+        }
+
+        hyp = hyperlapse(hypelement, options);
 
         hyp.onProgress(function(value) {
 
