@@ -30,3 +30,13 @@
 		-ms-grid-row: 2;
 		height: 100%;
 	}
+    
+#localcontenthost.onplayer {
+	height: 128px;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.phone .contenthostblock.onplayer {
+	height: 70px;
+	background-color: rgba(0, 0, 0, 0.2);
+}

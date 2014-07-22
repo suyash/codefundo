@@ -38,6 +38,11 @@
             }
         },
 
+        processed: function(element) {
+
+            console.log("herhe");
+        },
+
         ready: function (element, options) {
             
             $("#localcontenthost").addClass("onmapper");

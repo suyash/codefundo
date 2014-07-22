@@ -538,7 +538,6 @@
     HL.hyperlapseProgress = function(value) {
 
         HL.hyperlapseData.progress = value.toFixed(2) + "%";
-        console.log(HL.hyperlapseData.progress);
     };
 
     /**

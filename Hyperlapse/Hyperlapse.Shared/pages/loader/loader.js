@@ -45,6 +45,13 @@
         processed: function(element) {
 
             return WinJS.Binding.processAll(element, HL.hyperlapseData).then(function() {
+                
+                if (HL.signedIn) {
+                    HL.setSignedinBox();
+                } else {
+                    HL.setSignedoutBox();
+                }
+            }).then(function() {
 
                 return WinJS.Resources.processAll();
             });
@@ -57,6 +64,14 @@
                 HL.hyperlapseData.currentSection = 1;
 
                 HL.sendMessage(Message.Web.LOAD_HYPERLAPSE, HL.hyperlapseData.options);
+            });
+
+            $(".playbutton").listen("click", function () {
+
+                if (HL.loaded) {
+
+                    WinJS.Navigation.navigate("/pages/player/player.html");
+                }
             });
         },
 
