@@ -8,7 +8,7 @@
     <script src="loader.js"></script>
 </head>
 <body>
-    <div class="loader fragment">
+    <div class="loader fragment" data-win-bind="style.backgroundImage: previewimageurl HL.getBackgroundImageUrl">
         <header class="page-header" aria-label="Header content" role="banner">
             <button class="back-button" data-win-control="WinJS.UI.BackButton"></button>
             <h1 class="titlearea win-type-ellipsis">
@@ -19,31 +19,43 @@
         <section class="page-section" aria-label="Main content" role="main">
             <div class="loaderdata">
                 <div class="info">
-                    <div class="coords">
-                        <div class="row1">Start</div>
-                        <div style="-ms-grid-column: 2; -ms-grid-row: 1;">
-                            <span data-win-bind="innerHTML: startlat"></span>
-                            <span data-win-bind="innerHTML: startlong"></span>
-                        </div>
-                        <div style="-ms-grid-column: 1; -ms-grid-row: 2;">End</div>
-                        <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
-                            <span data-win-bind="innerHTML: endlat"></span>
-                            <span data-win-bind="innerHTML: endlong"></span>
-                        </div>
-                        <div style="-ms-grid-column: 1; -ms-grid-row: 3;">Lookat</div>
-                        <div style="-ms-grid-row: 3; -ms-grid-column: 2;">
-                            <span data-win-bind="innerHTML: lookatlat"></span>
-                            <span data-win-bind="innerHTML: lookatlong"></span>
-                        </div>
-                    </div>
-                    <div class="loadedValue">
-                        <div>
-                            <span data-win-bind="innerHTML: progress"></span><span>%</span>
-                        </div>
+                	<div class="infodata">
+                		<div class="coords">
+                			<div>Start</div>
+                			<div style="-ms-grid-column: 2; -ms-grid-row: 1;">
+                				<span data-win-bind="innerHTML:startlat HL.getLatitude"></span>
+                				<span data-win-bind="innerHTML:startlong HL.getLongitude"></span>
+                			</div>
+                			<div style="-ms-grid-column: 1; -ms-grid-row: 2;">End</div>
+                			<div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                                <span data-win-bind="innerHTML:endlat HL.getLatitude"></span>
+                                <span data-win-bind="innerHTML:endlong HL.getLongitude"></span>
+                			</div>
+                			<div style="-ms-grid-column: 1; -ms-grid-row: 3;">Lookat</div>
+                			<div style="-ms-grid-row: 3; -ms-grid-column: 2;">
+                                <span data-win-bind="innerHTML:lookatlat HL.getLatitude"></span>
+                                <span data-win-bind="innerHTML:lookatlong HL.getLongitude"></span>
+                			</div>
+                		</div>
+                	</div>
+                    <div class="pic">
+                        <img alt="map" />
                     </div>
                 </div>
-                <div class="pic">
-                    <img data-win-bind="src: previewimageurl" />
+                <div class="loaddata">
+                    <div class="loadbuttoncontainer buttoncontainer">
+                        <button class="loadbutton" data-win-res="{ innerHTML: 'LoadButtonContent' }"></button>
+                    </div>
+                	<div class="progressdata hidden">
+                		<div class="progressbar"></div>
+                		<div class="progresspercentage">
+                			<span data-win-bind="innerHTML:progress"></span>
+                			<span>%</span>
+                		</div>
+                	</div>
+                    <div class="playbuttoncontainer buttoncontainer hidden">
+                        <button class="playbutton" data-win-res="{ innerHTML: 'PlayButtonContent' }"></button>
+                    </div>
                 </div>
             </div>
         </section>

@@ -26,5 +26,8 @@
 	"LaunchHL": "Launch",
 
 	"AllAvailablePresets": "Select a Preset",
-	"PresetLoadingText": "Loading Presets"
+	"PresetLoadingText": "Loading Presets",
+
+	"PlayButtonContent": "Play",
+	"LoadButtonContent": "Load"
 }

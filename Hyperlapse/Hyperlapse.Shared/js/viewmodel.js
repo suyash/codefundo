@@ -44,7 +44,12 @@
     /**
     currentlyLoading, wlll be true if currently loading hyperlapse request
     */
-    HL.currentLyLoading = false;
+    HL.currentlyLoading = false;
+
+    /**
+    true if a loaded hyperlapse is already there
+    */
+    HL.loaded = false;
 
     /**
     will store data for curently loading/loaded hyperlapse request
@@ -100,6 +105,30 @@
 
         $(s).setStyle("background-image", "url(\"/images/hubBack/" + i + ".jpg\")");
     };
+
+    /**
+    binding converter to get a url for css background-image property
+    */
+    HL.getBackgroundImageUrl = WinJS.Binding.converter(function(url) {
+        
+        return "url(\"" + url + "\")";
+    });
+
+    /**
+    binding converter to get latitude
+    */
+    HL.getLatitude = WinJS.Binding.converter(function(n) {
+
+        return n.toFixed(2) + (n > 0 ? "N" : "S");
+    });
+
+    /**
+    binding converter to get longitude
+    */
+    HL.getLongitude = WinJS.Binding.converter(function (n) {
+
+        return n.toFixed(2) + (n > 0 ? "E" : "W");
+    });
 
     /**
     Create a flyout with a root

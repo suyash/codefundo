@@ -2,7 +2,8 @@
 
     "use strict";
 
-    var mapelement = null,
+    var isPhone = false,
+        mapelement = null,
         map = null,
         markers = {
             start: null,
@@ -33,6 +34,11 @@
     */
     var init = function() {
         
+        if (document.body.classList.contains("phone")) {
+
+            isPhone = true;
+        }
+
         document.body.addEventListener("click", function () {
 
             console.log("click!!!");

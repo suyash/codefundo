@@ -50,9 +50,9 @@
 
             list.oniteminvoked = function(e) {
 
-                var index = e.detail.itemIndex;
+                var index = e.detail.itemPromise.handle;
 
-                WinJS.Navigation.navigate("/pages/loader/loader.html", HL.allPresets.getAt(index));
+                WinJS.Navigation.navigate("/pages/loader/loader.html", HL.allPresets.getAt(index - 1));
             };
         },
 

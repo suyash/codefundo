@@ -1,6 +1,4 @@
-﻿.loader section {
-	margin: auto 120px;
-}
+﻿
 
 .phone .loader .page-section {
 	margin: auto 24px;
@@ -33,36 +31,79 @@
 }
 
 .loaderdata {
+	height: 100%;
 	display: -ms-grid;
-	-ms-grid-rows: 40px 1fr;
-	-ms-grid-columns: 400px 1fr;
+	-ms-grid-columns: 1fr;
+	-ms-grid-rows: 4fr 1fr;
 }
 
-.info {
+.loaderdata .info {
+	display: -ms-grid;
+	-ms-grid-columns: 40px 1fr 80px 1fr 120px;
+	-ms-grid-rows: 1fr;
 	-ms-grid-column: 1;
-	-ms-grid-row: 2;
+	-ms-grid-row: 1;
 }
 
-.pic {
+.loaderdata .infodata {
 	-ms-grid-column: 2;
-	-ms-grid-row: 2;
-	overflow: hidden;
-	border: 2px solid white;
+	-ms-grid-row: 1;
+	display: flex;
+	flex-direction: column;
+	margin: 20px 40px;
+	justify-content: center;
 }
 
-.coords {
+.loaderdata .coords {
 	display: -ms-grid;
-	-ms-grid-rows: 1fr 1fr 1fr;
-	-ms-grid-columns: 1fr 2fr;
-	font-size: 1.4em;
+	-ms-grid-columns: 1fr 1fr;
+	-ms-grid-rows: 60px 60px 60px 1fr;
+	height: 180px;
+	border: 0.5px solid white;
 }
 
-.loadedValue {
-	font-size: 8em;
+.loaderdata .coords div {
+	border: 0.5px solid white;
 	text-align: center;
-	padding-top: 40px;
+	padding-top: 20px;
 }
 
-.row1 {
+.loaderdata .loadbutton {
+}
+
+.loaderdata .playbutton {
+}
+
+.loaderdata .pic {
+	-ms-grid-column: 4;
+	-ms-grid-row: 1;
+	border: 1px solid white;
+}
+
+.loaderdata .loaddata {
+	-ms-grid-row: 2;
 	-ms-grid-column: 1;
+	display: -ms-grid;
+	-ms-grid-rows: 1fr;
+	-ms-grid-columns: 1fr;
+}
+
+.loaderdata .progressdata {
+	height: 100%;
+}
+
+.loaderdata .progresspercentage {
+	font-size: 2.5em;
+}
+
+.loaderdata .progressbar {
+	border-bottom: 5px solid white;
+	margin-bottom: 10px;
+}
+
+.loaderdata .buttoncontainer {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 }
