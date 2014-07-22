@@ -51,13 +51,14 @@
              layout: 'custom'
          }">
         
-        <button class="mappercommand hidden appbarcommand"
+        <button class="mappercommand appbarcommand"
                 data-win-control="WinJS.UI.AppBarCommand"
                 data-win-options="{
                     id: 'launchhlcommand',
-                    icon: 'right'
+                    icon: 'right',
+                    hidden: true
                 }"
-                data-win-res="{ 
+                data-win-res="{
                     winControl: {
                         label: 'LaunchHL'
                     }

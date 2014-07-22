@@ -38,7 +38,7 @@
         
         start: [29.8644, 77.8964],
         end: [29.8644, 77.8964],
-        lookAt: [29.8644, 77.8964]
+        lookat: [29.8644, 77.8964]
     };
 
     /**
@@ -410,7 +410,7 @@
             event handlers for appbar buttons
             */
             var playcommand = $("#playhlcommand"),
-                launchcommand = $("#launchhl");
+                launchcommand = $("#launchhlcommand");
 
             playcommand.listen("click", function () {
 
@@ -430,7 +430,21 @@
 
             launchcommand.listen("click", function() {
 
-                console.log(HL.markerLocations);
+                var l = HL.markerLocations;
+
+                var ob = {
+                    startlat: l.start[0],
+                    startlong: l.start[1],
+                    endlat: l.end[0],
+                    endlong: l.end[1],
+                    lookatlat: l.lookat[0],
+                    lookatlong: l.lookat[1],
+                    title: "Custom Hyperlapse",
+                    id: Date.now().toString(),
+                    previewimageurl: "https://ecce1d291b455d4931046de056c9e7583c9c96ff.googledrive.com/host/0B3gomzciSBpOYThjNC1iTXJNY00/1.jpg"
+                };
+
+                nav.navigate("/pages/loader/loader.html", ob);
             });
 
         }).then(function () {

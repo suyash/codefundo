@@ -26,8 +26,6 @@
 
             HL.sendMessage(Message.Web.SHOW_MAP, o);
             HL.$appbar.removeClass("hidden");
-            HL.$appbar.query(".appbarcommand").addClass("hidden");
-            HL.$appbar.query(".mappercommand").removeClass("hidden");
 
             $(".webview").removeClass("invisible");
 
@@ -35,6 +33,9 @@
 
                 HL.$appbar[0].winControl.showCommands("launchHL");
                 $("#herohost").addClass("hidden");
+            } else {
+
+                HL.$appbar[0].winControl.showCommands(["launchhlcommand"]);
             }
         },
 
@@ -83,6 +84,9 @@
 
                 HL.$appbar[0].winControl.hideCommands("launchHL");
                 $("#herohost").removeClass("hidden");
+            } else {
+
+                HL.$appbar[0].winControl.hideCommands(["launchhlcommand"]);
             }
         },
 

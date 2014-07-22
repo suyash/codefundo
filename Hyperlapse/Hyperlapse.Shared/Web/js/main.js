@@ -43,11 +43,6 @@
             isPhone = true;
         }
 
-        document.body.addEventListener("click", function () {
-
-            console.log("click!!!");
-        });
-
         /**
         Create Map
         */
