@@ -40,7 +40,7 @@
 
         processed: function(element) {
 
-            console.log("herhe");
+            return WinJS.Resources.processAll(element);
         },
 
         ready: function (element, options) {

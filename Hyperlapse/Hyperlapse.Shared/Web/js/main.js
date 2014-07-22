@@ -5,6 +5,7 @@
     var isPhone = false,
 
         hyp = null,
+        hypelement = null,
 
         mapelement = null,
         map = null,
@@ -249,6 +250,11 @@
             markerDragging.lookat = false;
             svoverlay.setMap(null);
         });
+
+        /**
+        cache hyperlapse container
+        */
+        hypelement = document.querySelector("#hyperlapse");
     };
 
     /**
@@ -333,13 +339,26 @@
     var getSuggestions = function (data) { };
 
     /**
+    empty hyperlapse element
+    */
+    var emptyhyp = function() {
+        
+        hypelement.innerHTML = "";
+    };
+
+    /**
     start loading a hyperlapse
     */
     var loadHyperlapse = function(data) {
 
-        hyp = hyperlapse(document.querySelector("#hyperlapse"), {
+        emptyhyp();
+
+        hyp = hyperlapse(hypelement, {
             
-            explore: true
+            explore: true,
+            start: [data.startlat, data.startlong],
+            end: [data.endlat, data.endlong],
+            lookat: [data.lookatlat, data.lookatlong]
         });
 
         hyp.onProgress(function(value) {
@@ -351,6 +370,33 @@
 
             sendMessage(Message.Local.HYPERLAPSE_LOADED);
         });
+    };
+
+    /**
+    play the currently loaded hyperlapse
+    */
+    var playHyperlapse = function() {
+
+        hyp.play();
+        sendMessage(Message.Local.PLAYED_HYPERLAPSE);
+    };
+
+    /**
+    pause the currently playing hyperlapse
+    */
+    var pauseHyperlapse = function () {
+
+        hyp.pause();
+        sendMessage(Message.Local.PAUSED_HYPERLAPSE);
+    };
+
+    /**
+    show hyperlapse
+    */
+    var showHyperlapse = function(data) {
+
+        document.querySelector(".active").classList.remove("active");
+        document.querySelector("#hyperlapsecontainer").classList.add("active");
     };
 
     window.sendMessage = function (id, data) {
@@ -380,8 +426,17 @@
             case Message.Web.GET_SEARCH_SUGGESTIONS:
                 getSuggestions(data.data);
                 break;
+            case Message.Web.SHOW_HYPERLAPSE:
+                showHyperlapse(data.data);
+                break;
             case Message.Web.LOAD_HYPERLAPSE:
                 loadHyperlapse(data.data);
+                break;
+            case Message.Web.PLAY_HYPERLAPSE:
+                playHyperlapse(data.data);
+                break;
+           case Message.Web.PAUSE_HYPERLAPSE:
+                pauseHyperlapse(data.data);
                 break;
             default:
                 console.log("No Web handler for event id", data.id);

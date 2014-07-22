@@ -18,7 +18,7 @@
 	display: none;
 }
 
-.fragment {
+.player.fragment {
 	-ms-grid-columns: 1fr;
 	-ms-grid-rows: 128px 1fr;
 	display: -ms-grid;
@@ -26,7 +26,7 @@
 	width: 100%;
 }
 
-	.fragment section[role=main] {
+	.player.fragment section[role=main] {
 		-ms-grid-row: 2;
 		height: 100%;
 	}

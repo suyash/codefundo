@@ -71,6 +71,7 @@
                 if (HL.loaded) {
 
                     WinJS.Navigation.navigate("/pages/player/player.html");
+                    HL.sendMessage(Message.Web.SHOW_HYPERLAPSE);
                 }
             });
         },

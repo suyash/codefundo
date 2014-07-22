@@ -52,6 +52,11 @@
     HL.loaded = false;
 
     /**
+    true if hyperlapse is playing
+    */
+    HL.playing = false;
+
+    /**
     will store data for curently loading/loaded hyperlapse request
     */
     HL.hyperlapseData = null;
@@ -393,15 +398,35 @@
             }
         }).then(function () {
 
-            
-        }).then(function () {
-
             /**
             set webview
             */
             webview = $(".webview")[0];
             webview.navigate("ms-appx-web:///Web/html/main.html");
             webview.addEventListener("MSWebViewScriptNotify", HL.receiveMessage);
+        }).then(function() {
+            
+            /**
+            event handlers for appbar buttons
+            */
+            var playcommand = $("#playhlcommand");
+
+            playcommand.listen("click", function () {
+
+                if (!HL.playing) {
+
+                    HL.sendMessage(Message.Web.PLAY_HYPERLAPSE);
+                    console.log(WinJS.Resources.getString("PauseHL"));
+                    playcommand[0].winControl.icon = "pause";
+                    playcommand[0].winControl.label = WinJS.Resources.getString("PauseHL").value;
+                } else {
+
+                    HL.sendMessage(Message.Web.PAUSE_HYPERLAPSE);
+                    playcommand[0].winControl.icon = "play";
+                    playcommand[0].winControl.label = WinJS.Resources.getString("PlayHL").value;
+                }
+            });
+
         }).then(function () {
 
             return HL.checkSigninStatus();
@@ -586,6 +611,12 @@
                     break;
                 case Message.Local.HYPERLAPSE_LOADED:
                     HL.hyperlapseLoaded();
+                    break;
+                case Message.Local.PLAYED_HYPERLAPSE:
+                    HL.playing = true;
+                    break;
+                case Message.Local.PAUSED_HYPERLAPSE:
+                    HL.playing = false;
                     break;
                 default:
                     console.log("No local handler for event with id", data.id);

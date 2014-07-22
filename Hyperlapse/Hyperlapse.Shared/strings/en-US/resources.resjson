@@ -24,6 +24,8 @@
 	"SignedinLogout": "Logout",
 
 	"LaunchHL": "Launch",
+	"PlayHL": "Play",
+	"PauseHL": "Pause",
 
 	"AllAvailablePresets": "Select a Preset",
 	"PresetLoadingText": "Loading Presets",
