@@ -428,6 +428,11 @@
                 }
             });
 
+            launchcommand.listen("click", function() {
+
+                console.log(HL.markerLocations);
+            });
+
         }).then(function () {
 
             return HL.checkSigninStatus();

@@ -38,13 +38,6 @@
 
                         HL.topPresets.push(results[i]);
                     }
-
-                    previewlist.addEventListener("iteminvoked", function(e) {
-
-                        var index = e.detail.itemIndex;
-
-                        WinJS.Navigation.navigate("/pages/loader/loader.html", HL.topPresets.getAt(index));
-                    });
                 }, function(error) {
 
                     console.log("Cannot get top presets", error);
@@ -59,13 +52,6 @@
 
                         HL.topLocations.push(results[i]);
                     }
-
-                    locationlist.addEventListener("iteminvoked", function(e) {
-
-                        var index = e.detail.itemIndex;
-
-                        WinJS.Navigation.navigate("/pages/mapper/mapper.html", HL.topLocations.getAt(index));
-                    });
                 }, function(error) {
 
                     console.log("Cannot get top presets", error);
@@ -73,9 +59,37 @@
 
                 return WinJS.Promise.join([presetsPromise, locationsPromise]).then(function() {
 
+                    previewlist.addEventListener("iteminvoked", function (e) {
+
+                        var index = e.detail.itemIndex;
+
+                        WinJS.Navigation.navigate("/pages/loader/loader.html", HL.topPresets.getAt(index));
+                    });
+
+                    locationlist.addEventListener("iteminvoked", function (e) {
+
+                        var index = e.detail.itemIndex;
+
+                        WinJS.Navigation.navigate("/pages/mapper/mapper.html", HL.topLocations.getAt(index));
+                    });
+
                     return WinJS.Resources.processAll(element);
                 });
             } else {
+
+                previewlist.addEventListener("iteminvoked", function (e) {
+
+                    var index = e.detail.itemIndex;
+
+                    WinJS.Navigation.navigate("/pages/loader/loader.html", HL.topPresets.getAt(index));
+                });
+
+                locationlist.addEventListener("iteminvoked", function (e) {
+
+                    var index = e.detail.itemIndex;
+
+                    WinJS.Navigation.navigate("/pages/mapper/mapper.html", HL.topLocations.getAt(index));
+                });
 
                 return WinJS.Resources.processAll(element);
             }
